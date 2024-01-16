@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_hu8fh"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_x0jux"]
-[ext_resource type="Script" path="res://src/player/state_machine.gd" id="3_3revu"]
 [ext_resource type="Script" path="res://src/player/key_manager.gd" id="3_kta7w"]
 [ext_resource type="Script" path="res://src/player/movement_comp.gd" id="3_no4fu"]
 [ext_resource type="Script" path="res://src/player/states/idle.gd" id="4_s8034"]
+[ext_resource type="Script" path="res://src/finite_state_machine.gd" id="5_1spff"]
 [ext_resource type="Script" path="res://src/player/states/aim.gd" id="5_lxemi"]
 [ext_resource type="Script" path="res://src/player/states/shoot.gd" id="6_nj7vb"]
 [ext_resource type="Script" path="res://src/player/states/swing.gd" id="7_uinno"]
@@ -16,12 +16,12 @@ radius = 32.1403
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_x0jux")
 
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cwxsp")
+
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_hu8fh")
-
-[node name="collision_shape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_cwxsp")
 
 [node name="movement_comp" type="Node" parent="."]
 script = ExtResource("3_no4fu")
@@ -30,7 +30,7 @@ script = ExtResource("3_no4fu")
 script = ExtResource("3_kta7w")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
-script = ExtResource("3_3revu")
+script = ExtResource("5_1spff")
 start_state = NodePath("idle")
 
 [node name="aim" type="Node" parent="state_machine"]
