@@ -4,9 +4,13 @@ extends CharacterBody2D
 var state_machine: Node = $state_machine
 @onready
 var movement_comp: Node = $movement_comp
+@onready
+var key_manager: Node = $movement_comp/key_manager
 
 func _ready():
+	movement_comp.init(self, key_manager)
 	state_machine.init(self, movement_comp)
+	
 
 func _process(delta: float):
 	state_machine.process_frame(delta)
