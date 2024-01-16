@@ -14,7 +14,7 @@ func init(character: CharacterBody2D, key_manager: Node):
 
 func print_key(key: Key):
 	var location: Vector2 = key_manager.get_key_location(key)
-	if location:
-		print("%c - %d - %v", key, key, location)
-	else:
-		print("Invalid key")
+	if location != Vector2(-1, -1):
+		print("%c - %d - %v" % [key, key, location])
+		return
+	print("Invalid key")

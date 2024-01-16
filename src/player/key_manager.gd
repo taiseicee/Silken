@@ -1,6 +1,6 @@
 extends Node
 
-var key_locations = {
+var key_locations: Dictionary = {
 	"49" = Vector2(0, 0), #KEY_1 - 1
 	"50" = Vector2(1, 0), #KEY_2 - 2
 	"51" = Vector2(2, 0), #KEY_3 - 3
@@ -46,5 +46,5 @@ var key_locations = {
 	"47" = Vector2(9, 3), #KEY_SLASH - /
 }
 
-func get_key_location(key: int) -> Vector2:
-	return key_locations.get(str(key), null)
+func get_key_location(key: Key) -> Vector2:
+	return key_locations.get(str(key), Vector2(-1, -1))
