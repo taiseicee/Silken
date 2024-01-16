@@ -1,6 +1,6 @@
 # A template for the states the state manager manages
-class_name State
 extends Node
+class_name State
 
 var character: CharacterBody2D
 var movement_comp: Node

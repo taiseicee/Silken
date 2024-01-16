@@ -1,5 +1,5 @@
-class_name FiniteStateMachine
 extends Node
+class_name FiniteStateMachine
 
 @export
 var start_state: State
