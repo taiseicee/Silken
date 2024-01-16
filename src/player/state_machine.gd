@@ -8,6 +8,8 @@ func init(character: CharacterBody2D, movement_comp: Node):
 	for state: State in get_children():
 		state.character = character
 		state.movement_comp = movement_comp
+	
+	change_state(start_state)
 
 func change_state(new_state: State):
 	if current_state:

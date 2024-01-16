@@ -23,8 +23,11 @@ shape = SubResource("CircleShape2D_cwxsp")
 
 [node name="movement_comp" type="Node" parent="."]
 
-[node name="state_machine" type="Node" parent="."]
+[node name="key_manager" type="Node" parent="movement_comp"]
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("3_3revu")
+start_state = NodePath("idle")
 
 [node name="aim" type="Node" parent="state_machine"]
 script = ExtResource("5_lxemi")
