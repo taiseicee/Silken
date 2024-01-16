@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://pry5mw621egt"]
+[gd_scene load_steps=9 format=3 uid="uid://pry5mw621egt"]
 
 [ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_hu8fh"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_x0jux"]
 [ext_resource type="Script" path="res://src/player/state_machine.gd" id="3_3revu"]
+[ext_resource type="Script" path="res://src/player/states/idle.gd" id="4_s8034"]
+[ext_resource type="Script" path="res://src/player/states/aim.gd" id="5_lxemi"]
+[ext_resource type="Script" path="res://src/player/states/shoot.gd" id="6_nj7vb"]
+[ext_resource type="Script" path="res://src/player/states/swing.gd" id="7_uinno"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwxsp"]
 radius = 32.1403
@@ -17,7 +21,19 @@ texture = ExtResource("1_hu8fh")
 [node name="collision_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cwxsp")
 
+[node name="movement_comp" type="Node" parent="."]
+
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource("3_3revu")
 
-[node name="movement_comp" type="Node" parent="."]
+[node name="aim" type="Node" parent="state_machine"]
+script = ExtResource("5_lxemi")
+
+[node name="idle" type="Node" parent="state_machine"]
+script = ExtResource("4_s8034")
+
+[node name="shoot" type="Node" parent="state_machine"]
+script = ExtResource("6_nj7vb")
+
+[node name="swing" type="Node" parent="state_machine"]
+script = ExtResource("7_uinno")
