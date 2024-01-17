@@ -5,8 +5,8 @@ var key_manager: Node
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var first_key: Key
-var second_key: Key
+var first_key
+var second_key
 
 func init(character: CharacterBody2D, key_manager: Node):
 	self.character = character

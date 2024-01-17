@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Entered: Aim State")
+	print("Web Machine > Aim State")
 
 func process_input(event: InputEvent):
 	if not Input.is_key_pressed(movement_comp.first_key):

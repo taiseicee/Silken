@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pry5mw621egt"]
+[gd_scene load_steps=13 format=3 uid="uid://pry5mw621egt"]
 
 [ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_hu8fh"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_x0jux"]
@@ -7,8 +7,9 @@
 [ext_resource type="Script" path="res://src/player/states/web/web_idle.gd" id="4_s8034"]
 [ext_resource type="Script" path="res://src/finite_state_machine.gd" id="5_1spff"]
 [ext_resource type="Script" path="res://src/player/states/web/web_aim.gd" id="5_lxemi"]
-[ext_resource type="Script" path="res://src/state.gd" id="6_a33wt"]
 [ext_resource type="Script" path="res://src/player/states/web/web_shoot.gd" id="6_nj7vb"]
+[ext_resource type="Script" path="res://src/player/states/move/move_fall.gd" id="6_qkbaq"]
+[ext_resource type="Script" path="res://src/player/states/move/move_idle.gd" id="7_1sxsp"]
 [ext_resource type="Script" path="res://src/player/states/move/move_swing.gd" id="7_uinno"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwxsp"]
@@ -35,10 +36,10 @@ script = ExtResource("5_1spff")
 start_state = NodePath("move_idle")
 
 [node name="move_fall" type="Node" parent="move_machine"]
-script = ExtResource("6_a33wt")
+script = ExtResource("6_qkbaq")
 
 [node name="move_idle" type="Node" parent="move_machine"]
-script = ExtResource("6_a33wt")
+script = ExtResource("7_1sxsp")
 
 [node name="move_swing" type="Node" parent="move_machine"]
 script = ExtResource("7_uinno")
@@ -47,11 +48,11 @@ script = ExtResource("7_uinno")
 script = ExtResource("5_1spff")
 start_state = NodePath("web_idle")
 
-[node name="web_idle" type="Node" parent="web_machine"]
-script = ExtResource("4_s8034")
-
 [node name="web_aim" type="Node" parent="web_machine"]
 script = ExtResource("5_lxemi")
+
+[node name="web_idle" type="Node" parent="web_machine"]
+script = ExtResource("4_s8034")
 
 [node name="web_shoot" type="Node" parent="web_machine"]
 script = ExtResource("6_nj7vb")
