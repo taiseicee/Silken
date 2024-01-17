@@ -7,8 +7,10 @@ extends Node2D
 func _on_player_dismiss_web():
 	web.node_b = web_end.get_path()
 
-func _on_player_spawn_web(pivot_point: Vector2, length: float):
+func _on_player_spawn_web(pivot_point: Vector2, web_length: float):
 	web_end.position = pivot_point
 	web.position = pivot_point
-	web.length = length
+	web.rotation = pivot_point.angle_to_point(player.position) - PI/2
+	web.length = web_length
+	web.rest_length = 1
 	web.node_b = player.get_path()

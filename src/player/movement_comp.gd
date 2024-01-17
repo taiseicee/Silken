@@ -10,7 +10,7 @@ var second_key
 
 var web_direction: Vector2
 var web_length: float
-@export var web_length_multiplier = 20
+@export var web_length_multiplier = 30
 @export var mass: float = 1
 
 func init(character: RigidBody2D, key_manager: Node):
