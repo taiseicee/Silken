@@ -7,6 +7,9 @@ extends RigidBody2D
 
 var can_swing: bool = false
 
+signal spawn_web
+signal dismiss_web
+
 func _ready():
 	movement_comp.init(self, key_manager)
 	move_machine.init(self, movement_comp)
@@ -23,7 +26,3 @@ func _unhandled_input(event: InputEvent):
 func _physics_process(delta: float):
 	move_machine.process_physics(delta)
 	web_machine.process_physics(delta)
-
-func _draw():
-	if web_machine.current_state.name.to_lower() == "web_shoot":
-		movement_comp.draw_web()

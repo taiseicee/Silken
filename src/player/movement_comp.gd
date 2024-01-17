@@ -10,7 +10,7 @@ var second_key
 
 var web_direction: Vector2
 var web_length: float
-@export var web_length_multiplier = 30
+@export var web_length_multiplier = 20
 @export var mass: float = 1
 
 func init(character: RigidBody2D, key_manager: Node):
@@ -24,6 +24,10 @@ func shoot():
 	
 	web_length = input_vector.length()
 	web_direction = input_vector.normalized()
+
+func swing():
+	character.spawn_web.emit(character.global_position + web_length * web_direction, web_length)
+	character.gravity_scale = 1
 
 func is_on_floor() -> bool:
 	return false
@@ -56,7 +60,3 @@ func print_key(key: Key):
 	var location: Vector2 = key_manager.get_key_location(key)
 	if is_valid_key(key, location):
 		print("%c - %d - %v" % [key, key, location])
-
-func draw_web():
-	if web_direction && web_length:
-		character.draw_line(Vector2.ZERO, web_length * web_direction, Color(1,1,1,1), 5)
