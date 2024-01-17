@@ -5,7 +5,6 @@ func enter_state():
 	print("Entered: Aim State")
 
 func process_input(event: InputEvent):
-	super(event)
 	if not Input.is_key_pressed(movement_comp.first_key):
 		state_transition.emit(self, "idle")
 		return
