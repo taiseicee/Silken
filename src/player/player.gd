@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 @onready var move_machine: FiniteStateMachine = $move_machine
 @onready var web_machine: FiniteStateMachine = $web_machine

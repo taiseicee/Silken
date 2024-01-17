@@ -1,6 +1,6 @@
 extends Node
 
-var character: CharacterBody2D
+var character: RigidBody2D
 var key_manager: Node
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -13,7 +13,7 @@ var web_length: float
 @export var web_length_multiplier = 30
 @export var mass: float = 1
 
-func init(character: CharacterBody2D, key_manager: Node):
+func init(character: RigidBody2D, key_manager: Node):
 	self.character = character
 	self.key_manager = key_manager
 
@@ -24,6 +24,9 @@ func shoot():
 	
 	web_length = input_vector.length()
 	web_direction = input_vector.normalized()
+
+func is_on_floor() -> bool:
+	return false
 
 func set_first_key(key: Key) -> bool:
 	#print("First Key:")

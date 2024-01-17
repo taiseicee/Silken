@@ -15,7 +15,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwxsp"]
 radius = 32.1403
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_x0jux")
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
