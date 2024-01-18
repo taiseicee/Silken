@@ -1,7 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwpa4j38qm3bn"]
+[gd_scene load_steps=5 format=3 uid="uid://bwpa4j38qm3bn"]
 
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_0eqc5"]
 [ext_resource type="PackedScene" uid="uid://pry5mw621egt" path="res://scenes/player/player.tscn" id="1_2ijks"]
+[ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="3_0dhel"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wccfv"]
 
 [node name="level_test" type="Node2D"]
+script = ExtResource("1_0eqc5")
 
 [node name="player" parent="." instance=ExtResource("1_2ijks")]
+position = Vector2(260, 170)
+
+[node name="web_end" type="StaticBody2D" parent="."]
+
+[node name="circle_collider" type="CollisionShape2D" parent="web_end"]
+shape = SubResource("CircleShape2D_wccfv")
+
+[node name="sprite" type="Sprite2D" parent="web_end"]
+modulate = Color(0.0470588, 0.654902, 0, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_0dhel")
+
+[node name="web" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("../web_end")
+node_b = NodePath("../web_end")
+length = 1.0
+
+[connection signal="dismiss_web" from="player" to="." method="_on_player_dismiss_web"]
+[connection signal="spawn_web" from="player" to="." method="_on_player_spawn_web"]

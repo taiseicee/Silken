@@ -1,19 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://pry5mw621egt"]
+[gd_scene load_steps=13 format=3 uid="uid://pry5mw621egt"]
 
 [ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_hu8fh"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_x0jux"]
 [ext_resource type="Script" path="res://src/player/key_manager.gd" id="3_kta7w"]
 [ext_resource type="Script" path="res://src/player/movement_comp.gd" id="3_no4fu"]
-[ext_resource type="Script" path="res://src/player/states/idle.gd" id="4_s8034"]
+[ext_resource type="Script" path="res://src/player/states/web/web_idle.gd" id="4_s8034"]
 [ext_resource type="Script" path="res://src/finite_state_machine.gd" id="5_1spff"]
-[ext_resource type="Script" path="res://src/player/states/aim.gd" id="5_lxemi"]
-[ext_resource type="Script" path="res://src/player/states/shoot.gd" id="6_nj7vb"]
-[ext_resource type="Script" path="res://src/player/states/swing.gd" id="7_uinno"]
+[ext_resource type="Script" path="res://src/player/states/web/web_aim.gd" id="5_lxemi"]
+[ext_resource type="Script" path="res://src/player/states/web/web_shoot.gd" id="6_nj7vb"]
+[ext_resource type="Script" path="res://src/player/states/move/move_fall.gd" id="6_qkbaq"]
+[ext_resource type="Script" path="res://src/player/states/move/move_idle.gd" id="7_1sxsp"]
+[ext_resource type="Script" path="res://src/player/states/move/move_swing.gd" id="7_uinno"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwxsp"]
 radius = 32.1403
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_x0jux")
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
@@ -29,18 +32,28 @@ script = ExtResource("3_no4fu")
 [node name="key_manager" type="Node" parent="movement_comp"]
 script = ExtResource("3_kta7w")
 
-[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+[node name="move_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("5_1spff")
-start_state = NodePath("idle")
+start_state = NodePath("move_idle")
 
-[node name="aim" type="Node" parent="state_machine"]
+[node name="move_fall" type="Node" parent="move_machine"]
+script = ExtResource("6_qkbaq")
+
+[node name="move_idle" type="Node" parent="move_machine"]
+script = ExtResource("7_1sxsp")
+
+[node name="move_swing" type="Node" parent="move_machine"]
+script = ExtResource("7_uinno")
+
+[node name="web_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("5_1spff")
+start_state = NodePath("web_idle")
+
+[node name="web_aim" type="Node" parent="web_machine"]
 script = ExtResource("5_lxemi")
 
-[node name="idle" type="Node" parent="state_machine"]
+[node name="web_idle" type="Node" parent="web_machine"]
 script = ExtResource("4_s8034")
 
-[node name="shoot" type="Node" parent="state_machine"]
+[node name="web_shoot" type="Node" parent="web_machine"]
 script = ExtResource("6_nj7vb")
-
-[node name="swing" type="Node" parent="state_machine"]
-script = ExtResource("7_uinno")

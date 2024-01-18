@@ -1,33 +1,53 @@
 extends Node
 
-var character: CharacterBody2D
+var character: RigidBody2D
 var key_manager: Node
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var first_key: Key
-var second_key: Key
+var first_key
+var second_key
 
-func init(character: CharacterBody2D, key_manager: Node):
+var web_direction: Vector2
+var web_length: float
+@export var web_length_multiplier = 30
+@export var mass: float = 1
+
+func init(character: RigidBody2D, key_manager: Node):
 	self.character = character
 	self.key_manager = key_manager
 
+func shoot():
+	var first_key_location = key_manager.get_key_location(first_key)
+	var second_key_location = key_manager.get_key_location(second_key)
+	var input_vector: Vector2 = web_length_multiplier * (second_key_location - first_key_location)
+	
+	web_length = input_vector.length()
+	web_direction = input_vector.normalized()
+
+func swing():
+	character.spawn_web.emit(character.global_position + web_length * web_direction, web_length)
+	character.gravity_scale = 1
+
+func is_on_floor() -> bool:
+	return false
+
 func set_first_key(key: Key) -> bool:
-	print("First Key:")
+	#print("First Key:")
 	var location: Vector2 = key_manager.get_key_location(key)
 	if not is_valid_key(key, location):
 		return false
 	first_key = key
-	print_key(key)
+	#print_key(key)
 	return true
 
 func set_second_key(key: Key) -> bool:
-	print("Second Key:")
+	#print("Second Key:")
 	var location: Vector2 = key_manager.get_key_location(key)
 	if not is_valid_key(key, location):
 		return false
 	second_key = key
-	print_key(key)
+	#print_key(key)
 	return true
 
 func is_valid_key(key: Key, location: Vector2):
