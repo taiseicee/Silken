@@ -8,6 +8,7 @@ extends RigidBody2D
 var can_swing: bool = false
 
 signal spawn_web
+signal swinging
 signal dismiss_web
 
 func _ready():

@@ -15,5 +15,3 @@ func process_physics(_delta: float):
 		state_transition.emit(self, "move_fall")
 		character.dismiss_web.emit()
 		character.gravity_scale = 0 # TODO: change to 1 later
-		
-	

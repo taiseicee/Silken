@@ -10,6 +10,7 @@ var second_key
 
 var web_direction: Vector2
 var web_length: float
+var pivot_point: Vector2
 @export var web_length_multiplier = 30
 @export var mass: float = 1
 
@@ -24,9 +25,11 @@ func shoot():
 	
 	web_length = input_vector.length()
 	web_direction = input_vector.normalized()
+	pivot_point = character.global_position + web_length * web_direction
+	character.spawn_web.emit(pivot_point)
 
 func swing():
-	character.spawn_web.emit(character.global_position + web_length * web_direction, web_length)
+	character.swinging.emit(pivot_point, web_length)
 	character.gravity_scale = 1
 
 func is_on_floor() -> bool:
