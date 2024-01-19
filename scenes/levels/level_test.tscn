@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwpa4j38qm3bn"]
+[gd_scene load_steps=10 format=3 uid="uid://bwpa4j38qm3bn"]
 
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_0eqc5"]
 [ext_resource type="PackedScene" uid="uid://pry5mw621egt" path="res://scenes/player/player.tscn" id="1_2ijks"]
 [ext_resource type="Texture2D" uid="uid://bctauvuadebvu" path="res://assets/art/levels/test_tile_map.png" id="2_p8nel"]
 [ext_resource type="PackedScene" uid="uid://cebpjnkfn2pai" path="res://scenes/player/web.tscn" id="3_imyqr"]
-[ext_resource type="PackedScene" uid="uid://db53yhyhuyail" path="res://scenes/cocoon.tscn" id="5_wlqdh"]
+[ext_resource type="PackedScene" uid="uid://4wusrim4iklv" path="res://scenes/cocoon.tscn" id="5_wlqdh"]
+[ext_resource type="Shader" path="res://scenes/levels/vignette.gdshader" id="6_rl6wp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eald7"]
 texture = ExtResource("2_p8nel")
@@ -24138,6 +24139,12 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 7
 sources/0 = SubResource("TileSetAtlasSource_eald7")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7554"]
+shader = ExtResource("6_rl6wp")
+shader_parameter/color = null
+shader_parameter/multiplier = 0.3
+shader_parameter/softness = 1.5
+
 [node name="level_test" type="Node2D"]
 script = ExtResource("1_0eqc5")
 
@@ -24155,6 +24162,16 @@ position = Vector2(260, 170)
 
 [node name="cocoon" parent="." instance=ExtResource("5_wlqdh")]
 position = Vector2(-3, 229)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_w7554")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="dismiss_web" from="player" to="." method="_on_player_dismiss_web"]
 [connection signal="spawn_web" from="player" to="." method="_on_player_spawn_web"]
