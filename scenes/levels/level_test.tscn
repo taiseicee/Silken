@@ -24133,7 +24133,8 @@ texture_region_size = Vector2i(100, 100)
 
 [sub_resource type="TileSet" id="TileSet_uk6yx"]
 tile_size = Vector2i(100, 100)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 7
 sources/0 = SubResource("TileSetAtlasSource_eald7")
 
 [node name="level_test" type="Node2D"]
