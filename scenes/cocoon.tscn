@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://db53yhyhuyail"]
+
+[ext_resource type="Script" path="res://src/items/cocoon.gd" id="1_cyxa7"]
+[ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_j1e6p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1pmgs"]
+radius = 19.0
+height = 38.0
+
+[node name="cocoon" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_cyxa7")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_j1e6p")
+
+[node name="capsule_collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1pmgs")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="capsule_collider" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_1pmgs")
