@@ -11,7 +11,8 @@ var second_key
 var web_direction: Vector2
 var web_length: float
 var pivot_point: Vector2
-@export var web_length_multiplier = 30
+@export var web_length_multiplier_x = 30
+@export var web_length_multiplier_y = 90
 @export var mass: float = 1
 
 func init(character: RigidBody2D, key_manager: Node):
@@ -21,7 +22,9 @@ func init(character: RigidBody2D, key_manager: Node):
 func shoot():
 	var first_key_location = key_manager.get_key_location(first_key)
 	var second_key_location = key_manager.get_key_location(second_key)
-	var input_vector: Vector2 = web_length_multiplier * (second_key_location - first_key_location)
+	var input_vector: Vector2 = second_key_location - first_key_location
+	input_vector.x *= web_length_multiplier_x
+	input_vector.y *= web_length_multiplier_y
 	
 	web_length = input_vector.length()
 	web_direction = input_vector.normalized()

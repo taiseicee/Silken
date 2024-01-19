@@ -3,6 +3,7 @@ extends State
 func enter_state():
 	super()
 	print("Move Machine > Idle State")
+	character.gravity_scale = 0
 
 func process_physics(_delta: float):
 	if movement_comp.is_on_floor():
