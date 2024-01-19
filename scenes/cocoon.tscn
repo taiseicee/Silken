@@ -19,8 +19,11 @@ texture = ExtResource("1_j1e6p")
 [node name="capsule_collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1pmgs")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="area_collect" type="Area2D" parent="."]
 collision_layer = 4
 
-[node name="capsule_collider" type="CollisionShape2D" parent="Area2D"]
+[node name="capsule_collider" type="CollisionShape2D" parent="area_collect"]
 shape = SubResource("CapsuleShape2D_1pmgs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="area_collect" to="." method="_on_area_2d_body_entered"]

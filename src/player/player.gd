@@ -27,3 +27,7 @@ func _unhandled_input(event: InputEvent):
 func _physics_process(delta: float):
 	move_machine.process_physics(delta)
 	web_machine.process_physics(delta)
+
+func collect_cocoon():
+	globals.cocoon_num += 1
+	print("- Coccons Collected: %d" % [globals.cocoon_num])
