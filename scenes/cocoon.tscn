@@ -1,29 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://4wusrim4iklv"]
+[gd_scene load_steps=6 format=3 uid="uid://4wusrim4iklv"]
 
 [ext_resource type="Script" path="res://src/items/cocoon.gd" id="1_cyxa7"]
-[ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_j1e6p"]
+[ext_resource type="Texture2D" uid="uid://cdcm54c0lia74" path="res://assets/graphics/items/silken_cocoon.png" id="2_f42y5"]
+[ext_resource type="Texture2D" uid="uid://btgp7r4bp5bnn" path="res://assets/graphics/lights/silken_point_light.png" id="3_sgdky"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1pmgs"]
-radius = 19.0
-height = 38.0
+radius = 35.0
+height = 70.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ikib6"]
+polygon = PackedVector2Array(0, 36, 13, 33, 22, 27, 32, 16, 35, -2, 32, -15, 22, -28, 9, -34, -8, -34, -20, -29, -27, -22, -34, -10, -36, 6, -31, 17, -24, 26, -15, 33)
 
 [node name="cocoon" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_cyxa7")
 
-[node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_j1e6p")
-
 [node name="capsule_collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1pmgs")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_f42y5")
 
 [node name="area_collect" type="Area2D" parent="."]
 collision_layer = 4
 
 [node name="capsule_collider" type="CollisionShape2D" parent="area_collect"]
 shape = SubResource("CapsuleShape2D_1pmgs")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.529412, 0.776471)
+energy = 0.2
+texture = ExtResource("3_sgdky")
+texture_scale = 0.3
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_ikib6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="area_collect" to="." method="_on_area_2d_body_entered"]
