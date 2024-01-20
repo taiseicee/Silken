@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Move Machine > Swing State")
+	#print("Move Machine > Swing State")
 	movement_comp.swing()
 	character.gravity_scale = 1
 

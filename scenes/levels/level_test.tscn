@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwpa4j38qm3bn"]
+[gd_scene load_steps=12 format=3 uid="uid://bwpa4j38qm3bn"]
 
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_0eqc5"]
 [ext_resource type="PackedScene" uid="uid://pry5mw621egt" path="res://scenes/player/player.tscn" id="1_2ijks"]
 [ext_resource type="PackedScene" uid="uid://cebpjnkfn2pai" path="res://scenes/player/web.tscn" id="3_imyqr"]
+[ext_resource type="PackedScene" uid="uid://dxai78xtjfa86" path="res://scenes/enemies/parasite.tscn" id="5_naqix"]
 [ext_resource type="PackedScene" uid="uid://4wusrim4iklv" path="res://scenes/cocoon.tscn" id="5_wlqdh"]
 [ext_resource type="Texture2D" uid="uid://dbo3x583cynbi" path="res://assets/graphics/levels/silken_test_tile_map.png" id="6_mjptv"]
 [ext_resource type="Shader" path="res://scenes/levels/vignette.gdshader" id="6_rl6wp"]
@@ -618,8 +619,12 @@ position = Vector2(260, 170)
 [node name="camera" type="Camera2D" parent="player"]
 position_smoothing_enabled = true
 
+[node name="parasite" parent="." instance=ExtResource("5_naqix")]
+position = Vector2(989, 230)
+
 [node name="cocoon" parent="." instance=ExtResource("5_wlqdh")]
 position = Vector2(-3, 229)
+metadata/_edit_lock_ = true
 
 [node name="vignette" type="CanvasLayer" parent="."]
 
@@ -630,6 +635,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="world_environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_23dv8")
