@@ -6,7 +6,7 @@ var start_state: State
 var current_state: State
 var states: Dictionary
 
-func init(character: RigidBody2D, movement_comp: Node):
+func init(character: PhysicsBody2D, movement_comp: Node):
 	for child in get_children():
 		var state := child as State
 		if not state:
