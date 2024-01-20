@@ -12,7 +12,6 @@ signal swinging
 signal dismiss_web
 
 func _ready():
-	movement_comp.init(self, key_manager)
 	move_machine.init(self, movement_comp)
 	web_machine.init(self, movement_comp)
 
