@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxai78xtjfa86"]
+
+[ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_idvj6"]
+[ext_resource type="Script" path="res://src/finite_state_machine.gd" id="2_17aj4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70jo5"]
+radius = 31.0
+height = 64.0
+
+[node name="parasite" type="CharacterBody2D"]
+
+[node name="capsule_collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_70jo5")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_idvj6")
+
+[node name="movement_comp" type="Node" parent="."]
+
+[node name="move_machine" type="Node" parent="."]
+script = ExtResource("2_17aj4")
