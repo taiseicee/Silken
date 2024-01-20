@@ -1,7 +1,7 @@
 extends Node
 
-var character: RigidBody2D
-var key_manager: Node
+@onready var character: RigidBody2D = $".."
+@onready var key_manager: Node = $key_manager
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -14,10 +14,6 @@ var pivot_point: Vector2
 @export var web_length_multiplier_x = 30
 @export var web_length_multiplier_y = 90
 @export var mass: float = 1
-
-func init(character: RigidBody2D, key_manager: Node):
-	self.character = character
-	self.key_manager = key_manager
 
 func shoot():
 	var first_key_location = key_manager.get_key_location(first_key)

@@ -1,8 +1,14 @@
 extends State
 
+@onready var player_head: Sprite2D = $"../../player_head"
+@export var head_turn_speed: float = 10
+
 func enter_state():
 	super()
 	print("Web Machine > Aim State")
+
+func process_frame(delta: float):
+	player_head.position = player_head.position.lerp(Vector2.ZERO, delta * head_turn_speed)
 
 func process_input(event: InputEvent):
 	if not Input.is_key_pressed(movement_comp.first_key):
