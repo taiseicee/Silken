@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://pry5mw621egt"]
+[gd_scene load_steps=14 format=3 uid="uid://pry5mw621egt"]
 
-[ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_hu8fh"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_x0jux"]
+[ext_resource type="Texture2D" uid="uid://d11bantlbm1c2" path="res://assets/graphics/player/silken_player_body.png" id="2_c4p3d"]
+[ext_resource type="Texture2D" uid="uid://clht6fyqsxv3e" path="res://assets/graphics/player/silken_player_head.png" id="3_j5tx3"]
 [ext_resource type="Script" path="res://src/player/key_manager.gd" id="3_kta7w"]
 [ext_resource type="Script" path="res://src/player/movement_comp.gd" id="3_no4fu"]
 [ext_resource type="Script" path="res://src/player/states/web/web_idle.gd" id="4_s8034"]
@@ -13,7 +14,7 @@
 [ext_resource type="Script" path="res://src/player/states/move/move_swing.gd" id="7_uinno"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwxsp"]
-radius = 32.1403
+radius = 50.01
 
 [node name="player" type="RigidBody2D"]
 collision_mask = 11
@@ -24,9 +25,12 @@ script = ExtResource("1_x0jux")
 [node name="collision_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cwxsp")
 
-[node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_hu8fh")
+[node name="player_body" type="Sprite2D" parent="."]
+texture = ExtResource("2_c4p3d")
+
+[node name="player_head" type="Sprite2D" parent="."]
+texture = ExtResource("3_j5tx3")
+offset = Vector2(0, 15)
 
 [node name="movement_comp" type="Node" parent="."]
 script = ExtResource("3_no4fu")

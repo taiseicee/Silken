@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bctauvuadebvu"
-path="res://.godot/imported/test_tile_map.png-70f8655a866c86df9c64e55443a348f2.ctex"
+uid="uid://dbo3x583cynbi"
+path="res://.godot/imported/silken_test_tile_map.png-4eac6ed28f502fab319d40267583f933.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/levels/test_tile_map.png"
-dest_files=["res://.godot/imported/test_tile_map.png-70f8655a866c86df9c64e55443a348f2.ctex"]
+source_file="res://assets/graphics/levels/silken_test_tile_map.png"
+dest_files=["res://.godot/imported/silken_test_tile_map.png-4eac6ed28f502fab319d40267583f933.ctex"]
 
 [params]
 
