@@ -10,7 +10,7 @@ func enter_state():
 
 func process_physics(delta: float):
 	super(delta)
-	if movement_comp.is_within_attack_range() && movement_comp.should_pursue():
+	if character.attack_machine.is_in_state("attack_attack"):
 		state_transition.emit(self, "move_idle")
 		return
 	

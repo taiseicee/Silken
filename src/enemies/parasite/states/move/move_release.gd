@@ -6,6 +6,10 @@ func enter_state():
 
 func process_physics(delta: float):
 	super(delta)
+	if not character.is_on_floor():
+		state_transition.emit(self, "move_fall")
+		return
+	
 	if movement_comp.can_anticipate:
 		movement_comp.can_anticipate = false
 		state_transition.emit(self, "move_anticipate")

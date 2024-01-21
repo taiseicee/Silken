@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxai78xtjfa86"]
+[gd_scene load_steps=14 format=3 uid="uid://dxai78xtjfa86"]
 
 [ext_resource type="Script" path="res://src/enemies/parasite/parasite.gd" id="1_fexof"]
 [ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_idvj6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_idle.gd" id="6_btqq8"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_release.gd" id="7_uv2cc"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_patrol.gd" id="8_1ebfo"]
+[ext_resource type="Script" path="res://src/enemies/parasite/states/move_fall.gd" id="8_e8vgs"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_pursuit.gd" id="9_eyrd4"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_attack.gd" id="10_gijgc"]
 
@@ -53,6 +54,9 @@ start_state = NodePath("move_idle")
 
 [node name="move_anticipate" type="Node" parent="move_machine"]
 script = ExtResource("5_wcfpq")
+
+[node name="move_fall" type="Node" parent="move_machine"]
+script = ExtResource("8_e8vgs")
 
 [node name="move_idle" type="Node" parent="move_machine"]
 script = ExtResource("6_btqq8")

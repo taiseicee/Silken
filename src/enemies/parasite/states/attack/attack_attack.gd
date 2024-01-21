@@ -1,8 +1,11 @@
 extends State
 
+@onready var timer_attack: Timer = $"../../timer_attack"
+
 func enter_state():
-	super.enter_state()
+	super()
 	print("Attack Machine > Attack State")
+	timer_attack.start()
 
 func process_frame(delta: float):
 	if not movement_comp.is_within_attack_range():

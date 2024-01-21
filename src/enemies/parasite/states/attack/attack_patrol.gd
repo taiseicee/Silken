@@ -1,7 +1,7 @@
 extends State
 
 func enter_state():
-	super.enter_state()
+	super()
 	print("Attack Machine > Patrol State")
 	movement_comp.init_patrol()
 

@@ -7,6 +7,8 @@ extends Node2D
 @onready var ray_cast_right: RayCast2D = $ray_cast_right
 @onready var ray_cast_vision: RayCast2D = $ray_cast_vision
 
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 @export var speed_slide_patrol: float = 200
 @export var time_anticipate_patrol: float = 2.5
 
@@ -16,7 +18,7 @@ extends Node2D
 @export var preferred_slide_distance: float = 150
 @export var max_descent_angle: float = 75 * PI/180
 
-@export var attack_range: float = 100
+@export var attack_range: float = 125
 @export var attack_damage: int = 10
 
 @export var direction: float = -1
@@ -24,7 +26,7 @@ var speed_slide: float = 200
 var slide_start_position: Vector2
 
 var can_anticipate: bool = false
-var can_attack: bool = true
+var can_attack: bool = false
 
 var player
 
@@ -112,17 +114,21 @@ func should_pursue() -> bool:
 func is_within_attack_range():
 	if not player:
 		return false
-	if abs(player.global_position.x - character.global_position.x) <= attack_range:
+	if character.global_position.distance_to(player.global_position) <= attack_range:
 		return true
 	return false
 
 func attack():
-	if not can_attack:
+	if not can_attack or not is_within_attack_range():
 		return
 	timer_attack.start()
 	can_attack = false
 	globals.health -= attack_damage
 	print(globals.health)
+
+func handle_gravity(delta: float):
+	character.velocity.y += gravity * delta
+	character.move_and_slide() 
 
 func _on_vision_body_entered(body: Node2D):
 	player = body

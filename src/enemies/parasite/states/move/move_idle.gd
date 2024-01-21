@@ -1,7 +1,7 @@
 extends State
 
 func enter_state():
-	super.enter_state()
+	super()
 	print("Move Machine > Idle State")
 
 func process_frame(delta: float):
@@ -10,6 +10,6 @@ func process_frame(delta: float):
 		state_transition.emit(self, "move_anticipate")
 		return
 	
-	if not movement_comp.is_within_attack_range():
+	if character.attack_machine.is_in_state("attack_pursuit"):
 		state_transition.emit(self, "move_anticipate")
 		return
