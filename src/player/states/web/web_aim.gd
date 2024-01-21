@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Web Machine > Aim State")
+	#print("Web Machine > Aim State")
 
 func process_frame(delta: float):
 	movement_comp.head_return(delta)

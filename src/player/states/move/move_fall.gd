@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Move Machine > Fall State")
+	#print("Move Machine > Fall State")
 	character.gravity_scale = 1
 
 func process_physics(_delta: float):
