@@ -7,7 +7,7 @@ func enter_state():
 	#print("Attack Machine > Attack State")
 	timer_attack.start()
 
-func process_frame(delta: float):
+func process_frame(_delta: float):
 	if not movement_comp.is_within_attack_range():
 		state_transition.emit(self, "attack_pursuit")
 		return

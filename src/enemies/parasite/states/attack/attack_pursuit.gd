@@ -5,7 +5,7 @@ func enter_state():
 	#print("Attack Machine > Pursuit State")
 	movement_comp.init_pursuit()
 
-func process_frame(delta):
+func process_frame(_delta):
 	if not movement_comp.should_pursue():
 		state_transition.emit(self, "attack_patrol")
 		return
