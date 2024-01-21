@@ -20,7 +20,7 @@ func should_change_direction() -> bool:
 	start_position_x = character.position.x
 	
 	if ray_cast_forward.is_colliding():
-		print(character.name + " Found Wall")
+		#print(character.name + " Found Wall")
 		return true
 	
 	ray_cast_down.position = target_position
@@ -29,7 +29,7 @@ func should_change_direction() -> bool:
 	ray_cast_down.target_position = multiplier * down_target_position
 	
 	if not ray_cast_down.is_colliding():
-		print(character.name + " Found Fall")
+		#print(character.name + " Found Fall")
 		return true
 	
 	return false
@@ -41,13 +41,12 @@ func change_direction():
 
 func slide(delta):
 	var progress: float = (character.position.x - start_position_x) / target_position.x
-	print("- Progress: %f | Direction: %f" % [progress, target_position.x])
 	if progress <= 0.5:
 		can_anticipate = false
-		#character.velocity.x = lerp(character.velocity.x, direction * speed_slide, 1)
+		#character.velocity.x = lerp(character.velocity.x, direction * speed_slide, 0.1)
 		character.velocity.x = direction * speed_slide
 	elif progress <= 1:
-		#character.velocity.x = lerp(character.velocity.x, 0, 1)
+		#character.velocity.x = lerp(character.velocity.x, 10.0, direction * 0.1)
 		character.velocity.x = direction * speed_slide
 	else:
 		character.velocity.x = 0
