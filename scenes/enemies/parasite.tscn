@@ -31,3 +31,7 @@ start_state = NodePath("move_patrol")
 
 [node name="move_patrol" type="Node" parent="move_machine"]
 script = ExtResource("5_xtumd")
+
+[node name="ray_cast_down" type="RayCast2D" parent="."]
+
+[node name="ray_cast_forward" type="RayCast2D" parent="."]
