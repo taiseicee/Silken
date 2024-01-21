@@ -4,7 +4,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Attack Machine > Attack State")
+	#print("Attack Machine > Attack State")
 	timer_attack.start()
 
 func process_frame(delta: float):

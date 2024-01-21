@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Attack Machine > Pursuit State")
+	#print("Attack Machine > Pursuit State")
 	movement_comp.init_pursuit()
 
 func process_frame(delta):

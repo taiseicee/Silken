@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Move Machine > Idle State")
+	#print("Move Machine > Idle State")
 
 func process_frame(delta: float):
 	super(delta)

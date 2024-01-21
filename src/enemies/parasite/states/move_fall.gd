@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Move Machine > Fall State")
+	#print("Move Machine > Fall State")
 
 func process_physics(delta: float):
 	if character.is_on_floor():

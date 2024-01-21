@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Move Machine > Release State")
+	#print("Move Machine > Release State")
 
 func process_physics(delta: float):
 	super(delta)

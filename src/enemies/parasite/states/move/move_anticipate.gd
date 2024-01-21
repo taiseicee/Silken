@@ -5,7 +5,7 @@ var will_release: bool = false
 
 func enter_state():
 	super()
-	print("Move Machine > Anticipate State")
+	#print("Move Machine > Anticipate State")
 	timer_release.start()
 
 func process_physics(delta: float):
