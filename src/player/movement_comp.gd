@@ -1,9 +1,11 @@
-extends Node
+extends Node2D
 
 @onready var character: RigidBody2D = $".."
 @onready var key_manager: Node = $key_manager
 
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var character_body: Sprite2D = $"../player_body"
+@onready var character_head: Sprite2D = $"../player_head"
+@onready var ray_cast_down: RayCast2D = $ray_cast_down
 
 var first_key
 var second_key
@@ -13,7 +15,9 @@ var web_length: float
 var pivot_point: Vector2
 @export var web_length_multiplier_x = 30
 @export var web_length_multiplier_y = 90
-@export var mass: float = 1
+
+@export var head_turn_speed: float = 10
+@export var head_turn_distance: float = 10
 
 func shoot():
 	var first_key_location = key_manager.get_key_location(first_key)
@@ -26,13 +30,32 @@ func shoot():
 	web_direction = input_vector.normalized()
 	pivot_point = character.global_position + web_length * web_direction
 	character.spawn_web.emit(pivot_point)
+	
+
+func in_shoot_turn(delta):
+	var direction_to_web: Vector2 = (web_direction * web_length)
+	character_head.flip_h = direction_to_web.x > 0
+	character_body.flip_h = direction_to_web.x > 0
+	if direction_to_web.x * character_head.offset.x < 0:
+		character_head.offset.x *= -1
+	character_head.position = character_head.position.lerp(direction_to_web.normalized() * head_turn_distance, delta * head_turn_speed)
+
+func in_swing_turn(delta):
+	character_head.flip_h = character.linear_velocity.x > 0
+	character_body.flip_h = character.linear_velocity.x > 0
+	if character.linear_velocity.x * character_head.offset.x < 0:
+		character_head.offset.x *= -1
+	character_head.position = character_head.position.lerp(Vector2.ZERO, delta * head_turn_speed)
+
+func head_return(delta):
+	character_head.position = character_head.position.lerp(Vector2.ZERO, delta * head_turn_speed)
 
 func swing():
 	character.swinging.emit(pivot_point, web_length)
 	character.gravity_scale = 1
 
 func is_on_floor() -> bool:
-	return false
+	return ray_cast_down.is_colliding()
 
 func set_first_key(key: Key) -> bool:
 	#print("First Key:")
