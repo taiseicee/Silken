@@ -10,4 +10,8 @@ func process_physics(delta: float):
 		movement_comp.can_anticipate = false
 		state_transition.emit(self, "move_anticipate")
 		return
-	movement_comp.slide(delta)
+	
+	if character.attack_machine.is_in_state("attack_patrol"):
+		movement_comp.slide_patrol()
+	elif character.attack_machine.is_in_state("attack_pursuit"):
+		movement_comp.slide_pursuit()
