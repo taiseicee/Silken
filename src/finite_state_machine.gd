@@ -11,7 +11,7 @@ func init(character: PhysicsBody2D, movement_comp: Node):
 		var state := child as State
 		if not state:
 			continue
-		states[state.name.to_lower()] = child
+		states[state.name.to_lower()] = state
 		state.state_transition.connect(change_state)
 		state.character = character
 		state.movement_comp = movement_comp
@@ -20,6 +20,9 @@ func init(character: PhysicsBody2D, movement_comp: Node):
 	
 	start_state.enter_state()
 	current_state = start_state;
+
+func is_in_state(state_name: String):
+	return current_state.name.to_lower() == state_name
 
 func change_state(source_state: State, new_state_name: String):
 	if source_state != current_state:

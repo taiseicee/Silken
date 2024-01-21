@@ -36,6 +36,10 @@ func slide(delta):
 		
 	character.move_and_slide()
 	
+	if character.is_on_wall(): 
+		can_anticipate = true
+		change_direction()
+		return
 	
 	if direction < 0 && not ray_cast_left.is_colliding():
 		can_anticipate = true
