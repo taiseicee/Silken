@@ -2,7 +2,7 @@
 extends Node
 class_name State
 
-var character: RigidBody2D
+var character: PhysicsBody2D
 var movement_comp: Node
 
 signal state_transition
