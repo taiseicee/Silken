@@ -43,3 +43,9 @@ collide_with_areas = true
 [node name="ray_cast_forward" type="RayCast2D" parent="."]
 collision_mask = 8
 collide_with_bodies = false
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="timeout" from="timer" to="move_machine/move_anticipate" method="_on_timer_timeout"]
