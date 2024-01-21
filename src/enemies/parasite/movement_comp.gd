@@ -4,17 +4,21 @@ extends Node
 @onready var ray_cast_forward: RayCast2D = $"../ray_cast_forward"
 @onready var ray_cast_down: RayCast2D = $"../ray_cast_down"
 
-@export var speed_patrol: float = 200
+@export var speed_slide: float = 200
 @export var slide_distance: float = 150
 @export var max_descent_angle: float = 75 * PI/180
-@export var ray_cast_buffer: float = 10
 
 @export var direction: float = -1
 var target_position: Vector2 = Vector2.ZERO
+var start_position_x: float
+
+var can_anticipate: bool = false
 
 func should_change_direction() -> bool:
 	target_position = Vector2(direction * slide_distance, 0)
 	ray_cast_forward.target_position = target_position
+	start_position_x = character.position.x
+	
 	if ray_cast_forward.is_colliding():
 		print(character.name + " Found Wall")
 		return true
@@ -24,9 +28,6 @@ func should_change_direction() -> bool:
 	var multiplier = slide_distance / cos(max_descent_angle)
 	ray_cast_down.target_position = multiplier * down_target_position
 	
-	print(ray_cast_down.target_position)
-	print(ray_cast_down.position)
-	
 	if not ray_cast_down.is_colliding():
 		print(character.name + " Found Fall")
 		return true
@@ -35,15 +36,27 @@ func should_change_direction() -> bool:
 
 func change_direction():
 	direction *= -1
+	target_position = Vector2(direction * slide_distance, 0)
+	start_position_x = character.position.x
 
-func patrol():
-	# TODO: Implement this better
-	var did_change_direction: bool = false
-	if character.is_on_wall() || not character.is_on_floor():
-		did_change_direction = true
-		direction *= -1
+func slide(delta):
+	var progress: float = (character.position.x - start_position_x) / target_position.x
+	print("- Progress: %f | Direction: %f" % [progress, target_position.x])
+	if progress <= 0.5:
+		can_anticipate = false
+		#character.velocity.x = lerp(character.velocity.x, direction * speed_slide, 1)
+		character.velocity.x = direction * speed_slide
+	elif progress <= 1:
+		#character.velocity.x = lerp(character.velocity.x, 0, 1)
+		character.velocity.x = direction * speed_slide
+	else:
+		character.velocity.x = 0
+		can_anticipate = true
 	
-	character.velocity.x = direction * speed_patrol
-	if did_change_direction:
-		character.velocity.x *= 1.5
 	character.move_and_slide()
+
+func should_anticipate() -> bool:
+	if can_anticipate:
+		can_anticipate = false
+		return true
+	return false
