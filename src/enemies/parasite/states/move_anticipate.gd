@@ -13,9 +13,6 @@ func process_physics(_delta: float):
 		return
 	timer.start()
 	will_release = false
-	if movement_comp.should_change_direction():
-		print("- changing direction")
-		movement_comp.change_direction()
 	state_transition.emit(self, "move_release")
 
 func _on_timer_timeout():

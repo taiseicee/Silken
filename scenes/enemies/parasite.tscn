@@ -23,8 +23,18 @@ shape = SubResource("CapsuleShape2D_70jo5")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_idvj6")
 
-[node name="movement_comp" type="Node" parent="."]
+[node name="movement_comp" type="Node2D" parent="."]
 script = ExtResource("3_fgxia")
+
+[node name="ray_cast_right" type="RayCast2D" parent="movement_comp"]
+position = Vector2(31, 0)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="ray_cast_left" type="RayCast2D" parent="movement_comp"]
+position = Vector2(-31, 0)
+collision_mask = 8
+collide_with_areas = true
 
 [node name="move_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("2_17aj4")
@@ -35,14 +45,6 @@ script = ExtResource("5_ljxxj")
 
 [node name="move_release" type="Node" parent="move_machine"]
 script = ExtResource("6_yqyvb")
-
-[node name="ray_cast_down" type="RayCast2D" parent="."]
-collision_mask = 8
-collide_with_areas = true
-
-[node name="ray_cast_forward" type="RayCast2D" parent="."]
-collision_mask = 8
-collide_with_bodies = false
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 2.5

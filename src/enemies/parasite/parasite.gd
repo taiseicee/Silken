@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var movement_comp: Node = $movement_comp
 
 func _ready():
+	movement_comp.init()
 	move_machine.init(self, movement_comp)
 
 func _process(delta: float):
