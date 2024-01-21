@@ -5,7 +5,7 @@ class_name Web
 @onready var web_line: Line2D = $web_line
 var from_body
 
-func _process(delta):
+func _process(_delta):
 	web_line.points = []
 	if from_body:
 		web_line.add_point(Vector2.ZERO)

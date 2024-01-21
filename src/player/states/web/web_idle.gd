@@ -2,7 +2,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Web Machine > Idle State")
+	#print("Web Machine > Idle State")
 
 func process_input(event: InputEvent):
 	super(event)

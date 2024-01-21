@@ -5,7 +5,7 @@ extends State
 
 func enter_state():
 	super()
-	print("Web Machine > Aim State")
+	#print("Web Machine > Aim State")
 
 func process_frame(delta: float):
 	player_head.position = player_head.position.lerp(Vector2.ZERO, delta * head_turn_speed)
