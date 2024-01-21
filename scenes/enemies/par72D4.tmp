@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_idvj6"]
 [ext_resource type="Script" path="res://src/finite_state_machine.gd" id="2_17aj4"]
 [ext_resource type="Script" path="res://src/enemies/parasite/movement_comp.gd" id="3_fgxia"]
-[ext_resource type="Script" path="res://src/enemies/parasite/states/move_anticipate.gd" id="5_ljxxj"]
-[ext_resource type="Script" path="res://src/enemies/parasite/states/move_release.gd" id="6_yqyvb"]
+[ext_resource type="Script" path="res://src/enemies/parasite/states/move_patrol.gd" id="5_xtumd"]
+[ext_resource type="Script" path="res://src/enemies/parasite/ray_cast_down.gd" id="6_8woyp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70jo5"]
 radius = 31.0
@@ -28,17 +28,15 @@ script = ExtResource("3_fgxia")
 
 [node name="move_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("2_17aj4")
-start_state = NodePath("move_anticipate")
+start_state = NodePath("move_patrol")
 
-[node name="move_anticipate" type="Node" parent="move_machine"]
-script = ExtResource("5_ljxxj")
-
-[node name="move_release" type="Node" parent="move_machine"]
-script = ExtResource("6_yqyvb")
+[node name="move_patrol" type="Node" parent="move_machine"]
+script = ExtResource("5_xtumd")
 
 [node name="ray_cast_down" type="RayCast2D" parent="."]
 collision_mask = 8
 collide_with_areas = true
+script = ExtResource("6_8woyp")
 
 [node name="ray_cast_forward" type="RayCast2D" parent="."]
 collision_mask = 8
