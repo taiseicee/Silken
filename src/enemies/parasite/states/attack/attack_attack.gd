@@ -8,3 +8,5 @@ func process_frame(delta: float):
 	if not movement_comp.is_within_attack_range():
 		state_transition.emit(self, "attack_pursuit")
 		return
+	
+	movement_comp.attack()

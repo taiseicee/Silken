@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var character: CharacterBody2D = $".."
 @onready var timer_release: Timer = $"../timer_release"
+@onready var timer_attack: Timer = $"../timer_attack"
 @onready var ray_cast_left: RayCast2D = $ray_cast_left
 @onready var ray_cast_right: RayCast2D = $ray_cast_right
 @onready var ray_cast_vision: RayCast2D = $ray_cast_vision
@@ -15,13 +16,15 @@ extends Node2D
 @export var preferred_slide_distance: float = 150
 @export var max_descent_angle: float = 75 * PI/180
 
-@export var attack_range = 100
+@export var attack_range: float = 100
+@export var attack_damage: int = 10
 
 @export var direction: float = -1
 var speed_slide: float = 200
 var slide_start_position: Vector2
 
 var can_anticipate: bool = false
+var can_attack: bool = true
 
 var player
 
@@ -113,8 +116,19 @@ func is_within_attack_range():
 		return true
 	return false
 
+func attack():
+	if not can_attack:
+		return
+	timer_attack.start()
+	can_attack = false
+	globals.health -= attack_damage
+	print(globals.health)
+
 func _on_vision_body_entered(body: Node2D):
 	player = body
 
 func _on_vision_body_exited(_body: Node2D):
 	player = null
+
+func _on_timer_attack_timeout():
+	can_attack = true

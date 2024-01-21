@@ -77,6 +77,9 @@ script = ExtResource("10_gijgc")
 wait_time = 2.5
 one_shot = true
 
+[node name="timer_attack" type="Timer" parent="."]
+wait_time = 2.5
+
 [node name="vision" type="Area2D" parent="."]
 collision_layer = 2
 
@@ -84,5 +87,6 @@ collision_layer = 2
 shape = SubResource("CircleShape2D_35wfw")
 
 [connection signal="timeout" from="timer_release" to="move_machine/move_anticipate" method="_on_timer_timeout"]
+[connection signal="timeout" from="timer_attack" to="movement_comp" method="_on_timer_attack_timeout"]
 [connection signal="body_entered" from="vision" to="movement_comp" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="vision" to="movement_comp" method="_on_vision_body_exited"]

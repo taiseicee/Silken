@@ -8,13 +8,12 @@ func enter_state():
 	print("Move Machine > Anticipate State")
 	timer_release.start()
 
-func process_frame(delta: float):
-	if movement_comp.is_within_attack_range():
-		state_transition.emit(self, "move_idle")
-		return
-
 func process_physics(delta: float):
 	super(delta)
+	if movement_comp.is_within_attack_range() && movement_comp.should_pursue():
+		state_transition.emit(self, "move_idle")
+		return
+	
 	if not will_release:
 		return
 	timer_release.start()
