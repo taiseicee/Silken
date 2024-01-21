@@ -3,15 +3,25 @@ extends Node2D
 @onready var character: CharacterBody2D = $".."
 @onready var ray_cast_left: RayCast2D = $ray_cast_left
 @onready var ray_cast_right: RayCast2D = $ray_cast_right
+@onready var ray_cast_vision: RayCast2D = $ray_cast_vision
 
-@export var speed_slide: float = 200
+@export var speed_slide_patrol: float = 200
+@export var time_anticipate_patrol: float = 2.5
+
+@export var speed_slide_pursuit: float = 500
+@export var time_anticipate_pursuit: float = 1.5
+
 @export var preferred_slide_distance: float = 150
 @export var max_descent_angle: float = 75 * PI/180
 
 @export var direction: float = -1
+var speed_slide: float = 200
+var time_anticipate: float = 2.5
 var slide_start_position: Vector2
 
 var can_anticipate: bool = false
+
+var player
 
 func init():
 	var target_multiplier: float = abs(ray_cast_left.position.x / cos(max_descent_angle))
@@ -20,6 +30,14 @@ func init():
 	ray_cast_right.target_position = ray_cast_left.target_position
 	
 	slide_start_position = character.position
+
+func init_patrol():
+	speed_slide = speed_slide_patrol
+	time_anticipate = time_anticipate_patrol
+
+func init_pursuit():
+	speed_slide = speed_slide_pursuit
+	time_anticipate = time_anticipate_pursuit
 
 func change_direction():
 	direction *= -1
@@ -51,8 +69,23 @@ func slide(delta):
 		change_direction()
 		return
 
-func should_anticipate() -> bool:
-	if can_anticipate:
-		can_anticipate = false
+func should_pursue() -> bool:
+	if not player:
+		return false
+	
+	ray_cast_vision.target_position = player.global_position - character.global_position
+	
+	if not ray_cast_vision.is_colliding():
+		return false
+	
+	if ray_cast_vision.get_collider() is PhysicsBody2D:
 		return true
+	
 	return false
+
+func _on_vision_body_entered(body: Node2D):
+	player = body
+	print("- Player in Area")
+
+func _on_vision_body_exited(_body: Node2D):
+	player = null

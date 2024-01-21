@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Player
 
 @onready var move_machine: FiniteStateMachine = $move_machine
 @onready var web_machine: FiniteStateMachine = $web_machine

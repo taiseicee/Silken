@@ -6,7 +6,8 @@ func enter_state():
 
 func process_physics(delta: float):
 	super(delta)
-	if movement_comp.should_anticipate():
+	if movement_comp.can_anticipate:
+		movement_comp.can_anticipate = false
 		state_transition.emit(self, "move_anticipate")
 		return
 	movement_comp.slide(delta)
