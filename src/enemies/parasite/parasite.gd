@@ -4,10 +4,13 @@ class_name Parasite
 @onready var move_machine: FiniteStateMachine = $move_machine
 @onready var attack_machine: FiniteStateMachine = $attack_machine
 @onready var movement_comp: Node = $movement_comp
+@onready var health_bar: ProgressBar = $health_bar
 
-@export var health: int = 100
+@export var health_max: int = 100
 
 func _ready():
+	health_bar.value = health_max
+	health_bar.max_value = health_max
 	movement_comp.init()
 	attack_machine.init(self, movement_comp)
 	move_machine.init(self, movement_comp)
@@ -25,5 +28,7 @@ func _physics_process(delta: float):
 	attack_machine.process_physics(delta)
 
 func take_damage(damage_value: int):
-	health -= damage_value
-	print("Parasite Health: %d" % [health])
+	health_bar.value -= damage_value
+	if health_bar.value <= 0:
+		#TODO: Force State
+		queue_free()
