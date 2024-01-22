@@ -4,8 +4,14 @@ extends Node2D
 @onready var projectiles: Node = $projectiles
 @onready var web: Web = $web
 @onready var camera: Camera2D = $player/camera
+@onready var parallax_background: ParallaxBackground = $parallax_background
 
 var web_projectile_scene: PackedScene = preload("res://scenes/projectiles/web_projectile.tscn")
+
+func _ready():
+	for child: ParallaxLayer in parallax_background.get_children():
+		var background := child.get_child(0) as Sprite2D
+		child.motion_mirroring = Vector2(background.get_rect().size.x, 0)
 
 func _on_player_spawn_web(pivot_point: Vector2):
 	web.shoot_web(player, pivot_point)
