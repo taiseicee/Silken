@@ -11,6 +11,9 @@ func process_frame(delta: float):
 	elif character.move_machine.is_in_state("move_idle") or character.move_machine.is_in_state("move_fall"):
 		movement_comp.in_shoot_turn(delta)
 	
+	if Input.is_action_pressed("primary_action"):
+		movement_comp.attack()
+	
 func process_input(_event: InputEvent):
 	if Input.is_key_pressed(movement_comp.first_key) && Input.is_key_pressed(movement_comp.second_key):
 		character.can_swing = false

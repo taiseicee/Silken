@@ -6,6 +6,13 @@ extends Node2D
 @onready var character_body: Sprite2D = $"../player_body"
 @onready var character_head: Sprite2D = $"../player_head"
 @onready var ray_cast_down: RayCast2D = $ray_cast_down
+@onready var timer_attack: Timer = $timer_attack
+
+@export var web_length_multiplier_x = 30
+@export var web_length_multiplier_y = 90
+
+@export var head_turn_speed: float = 10
+@export var head_turn_distance: float = 10
 
 var first_key
 var second_key
@@ -13,11 +20,16 @@ var second_key
 var web_direction: Vector2
 var web_length: float
 var pivot_point: Vector2
-@export var web_length_multiplier_x = 30
-@export var web_length_multiplier_y = 90
 
-@export var head_turn_speed: float = 10
-@export var head_turn_distance: float = 10
+var can_attack: bool = true
+
+func attack():
+	if not can_attack:
+		return
+	can_attack = false
+	timer_attack.start()
+	var direction_attack: Vector2 = get_global_mouse_position() - character.global_position
+	character.spawn_web_attack.emit(direction_attack.normalized())
 
 func shoot():
 	var first_key_location = key_manager.get_key_location(first_key)
@@ -31,6 +43,9 @@ func shoot():
 	pivot_point = character.global_position + web_length * web_direction
 	character.spawn_web.emit(pivot_point)
 	
+func swing():
+	character.swinging.emit(pivot_point, web_length)
+	character.gravity_scale = 1
 
 func in_shoot_turn(delta):
 	var direction_to_web: Vector2 = (web_direction * web_length)
@@ -49,10 +64,6 @@ func in_swing_turn(delta):
 
 func head_return(delta):
 	character_head.position = character_head.position.lerp(Vector2.ZERO, delta * head_turn_speed)
-
-func swing():
-	character.swinging.emit(pivot_point, web_length)
-	character.gravity_scale = 1
 
 func is_on_floor() -> bool:
 	return ray_cast_down.is_colliding()
@@ -85,3 +96,6 @@ func print_key(key: Key):
 	var location: Vector2 = key_manager.get_key_location(key)
 	if is_valid_key(key, location):
 		print("%c - %d - %v" % [key, key, location])
+
+func _on_timer_attack_timeout():
+	can_attack = true

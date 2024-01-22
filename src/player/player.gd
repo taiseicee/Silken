@@ -11,6 +11,7 @@ var can_swing: bool = false
 signal spawn_web
 signal swinging
 signal dismiss_web
+signal spawn_web_attack(direction: Vector2)
 
 func _ready():
 	move_machine.init(self, movement_comp)

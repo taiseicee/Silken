@@ -1,8 +1,11 @@
 extends CharacterBody2D
+class_name Parasite
 
 @onready var move_machine: FiniteStateMachine = $move_machine
 @onready var attack_machine: FiniteStateMachine = $attack_machine
 @onready var movement_comp: Node = $movement_comp
+
+@export var health: int = 100
 
 func _ready():
 	movement_comp.init()
@@ -20,3 +23,7 @@ func _unhandled_input(event: InputEvent):
 func _physics_process(delta: float):
 	move_machine.process_physics(delta)
 	attack_machine.process_physics(delta)
+
+func take_damage(damage_value: int):
+	health -= damage_value
+	print("Parasite Health: %d" % [health])
