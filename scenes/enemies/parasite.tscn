@@ -83,6 +83,7 @@ one_shot = true
 
 [node name="timer_attack" type="Timer" parent="."]
 wait_time = 2.5
+one_shot = true
 
 [node name="vision" type="Area2D" parent="."]
 collision_layer = 2
