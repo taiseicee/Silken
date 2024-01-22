@@ -47,6 +47,10 @@ target_position = Vector2(0, 40)
 collision_mask = 8
 collide_with_areas = true
 
+[node name="ray_cast_attack" type="RayCast2D" parent="movement_comp"]
+collision_mask = 10
+collide_with_areas = true
+
 [node name="move_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("5_1spff")
 start_state = NodePath("move_idle")

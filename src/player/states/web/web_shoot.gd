@@ -4,6 +4,7 @@ func enter_state():
 	super()
 	#print("Web Machine > Shoot State")
 	movement_comp.shoot()
+	movement_comp.attack()
 
 func process_frame(delta: float):
 	if character.move_machine.is_in_state("move_swing"):
