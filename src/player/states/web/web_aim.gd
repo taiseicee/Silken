@@ -6,6 +6,9 @@ func enter_state():
 
 func process_frame(delta: float):
 	movement_comp.head_return(delta)
+	
+	if Input.is_action_pressed("primary_action"):
+		movement_comp.attack()
 
 func process_input(event: InputEvent):
 	if not Input.is_key_pressed(movement_comp.first_key):

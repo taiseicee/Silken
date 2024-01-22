@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var timer_destruct: Timer = $timer_destruct
 
-@export var speed: float = 1000
+@export var speed: float = 2000
 @export var damage: int = 10
 
 var direction: Vector2 = Vector2.UP

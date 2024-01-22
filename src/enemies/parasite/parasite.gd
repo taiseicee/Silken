@@ -24,6 +24,6 @@ func _physics_process(delta: float):
 	move_machine.process_physics(delta)
 	attack_machine.process_physics(delta)
 
-func damage(damage_value: int):
+func take_damage(damage_value: int):
 	health -= damage_value
 	print("Parasite Health: %d" % [health])
