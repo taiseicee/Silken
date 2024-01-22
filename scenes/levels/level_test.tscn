@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_0eqc5"]
 [ext_resource type="PackedScene" uid="uid://pry5mw621egt" path="res://scenes/player/player.tscn" id="1_2ijks"]
-[ext_resource type="PackedScene" uid="uid://cebpjnkfn2pai" path="res://scenes/player/web.tscn" id="3_imyqr"]
+[ext_resource type="PackedScene" uid="uid://cebpjnkfn2pai" path="res://scenes/projectiles/web.tscn" id="3_imyqr"]
 [ext_resource type="PackedScene" uid="uid://dxai78xtjfa86" path="res://scenes/enemies/parasite.tscn" id="5_naqix"]
-[ext_resource type="PackedScene" uid="uid://4wusrim4iklv" path="res://scenes/cocoon.tscn" id="5_wlqdh"]
+[ext_resource type="PackedScene" uid="uid://4wusrim4iklv" path="res://scenes/items/cocoon.tscn" id="5_wlqdh"]
 [ext_resource type="Texture2D" uid="uid://dbo3x583cynbi" path="res://assets/graphics/levels/silken_test_tile_map.png" id="6_mjptv"]
 [ext_resource type="Shader" path="res://scenes/levels/vignette.gdshader" id="6_rl6wp"]
 
