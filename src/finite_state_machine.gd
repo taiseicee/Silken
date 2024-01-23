@@ -6,7 +6,10 @@ var start_state: State
 var current_state: State
 var states: Dictionary
 
-func init(character: PhysicsBody2D, movement_comp: Node, animation_player: AnimationPlayer = null):
+func init(character: PhysicsBody2D, 
+		  move_comp: Node = null, 
+		  action_comp: Node = null, 
+		  animation_player: AnimationPlayer = null):
 	for child in get_children():
 		var state := child as State
 		if not state:
@@ -14,7 +17,10 @@ func init(character: PhysicsBody2D, movement_comp: Node, animation_player: Anima
 		states[state.name.to_lower()] = state
 		state.state_transition.connect(change_state)
 		state.character = character
-		state.movement_comp = movement_comp
+		if move_comp:
+			state.move_comp = move_comp
+		if action_comp:
+			state.action_comp = action_comp
 		if animation_player:
 			state.animation_player = animation_player
 	
@@ -28,7 +34,10 @@ func is_in_state(state_name: String):
 
 func change_state(source_state: State, new_state_name: String):
 	if source_state != current_state:
-		print("WARNING: Change state from ", source_state.name, " to ", new_state_name, " but the current state is ", current_state.name)
+		print(
+			"WARNING: Request to change state from %s to %s, but the current state is %s" %
+			[source_state.name, new_state_name, current_state.name]
+		)
 	
 	var new_state = states.get(new_state_name.to_lower())
 	assert(new_state, "ERROR: Invalid state")

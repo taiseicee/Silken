@@ -8,7 +8,7 @@ func enter_state():
 	animation_player.queue("move_fall")
 
 func process_physics(_delta: float):
-	if movement_comp.is_on_floor():
+	if move_comp.is_on_floor():
 		state_transition.emit(self, "move_idle")
 		character.gravity_scale = 0
 		return

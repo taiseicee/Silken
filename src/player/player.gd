@@ -14,8 +14,8 @@ signal dismiss_web
 signal spawn_web_attack(direction: Vector2)
 
 func _ready():
-	move_machine.init(self, movement_comp, animation_player_body)
-	web_machine.init(self, movement_comp, animation_player_head)
+	move_machine.init(self, movement_comp, null, animation_player_body)
+	web_machine.init(self, movement_comp, null, animation_player_head)
 
 func _process(delta: float):
 	move_machine.process_frame(delta)

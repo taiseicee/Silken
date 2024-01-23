@@ -3,7 +3,7 @@ extends State
 func enter_state():
 	super()
 	#print("Move Machine > Swing State")
-	movement_comp.swing()
+	move_comp.swing()
 	character.gravity_scale = 1
 	animation_player.queue("move_swing")
 
@@ -11,7 +11,7 @@ func process_physics(_delta: float):
 	if character.web_machine.is_in_state("web_swing"):
 		return
 	
-	if movement_comp.is_on_floor():
+	if move_comp.is_on_floor():
 		state_transition.emit(self, "move_idle")
 		character.dismiss_web.emit()
 		return

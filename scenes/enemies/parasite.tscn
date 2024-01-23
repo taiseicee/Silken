@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/enemies/parasite/parasite.gd" id="1_fexof"]
 [ext_resource type="Texture2D" uid="uid://k3uycxrwxec2" path="res://icon.svg" id="1_idvj6"]
 [ext_resource type="Script" path="res://src/finite_state_machine.gd" id="2_17aj4"]
-[ext_resource type="Script" path="res://src/enemies/parasite/movement_comp.gd" id="3_fgxia"]
+[ext_resource type="Script" path="res://src/enemies/parasite/move_comp.gd" id="3_dfwlk"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_anticipate.gd" id="5_wcfpq"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_idle.gd" id="6_btqq8"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_release.gd" id="7_uv2cc"]
@@ -31,20 +31,20 @@ shape = SubResource("CapsuleShape2D_70jo5")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_idvj6")
 
-[node name="movement_comp" type="Node2D" parent="."]
-script = ExtResource("3_fgxia")
+[node name="move_comp" type="Node2D" parent="."]
+script = ExtResource("3_dfwlk")
 
-[node name="ray_cast_right" type="RayCast2D" parent="movement_comp"]
+[node name="ray_cast_right" type="RayCast2D" parent="move_comp"]
 position = Vector2(31, 0)
 collision_mask = 8
 collide_with_areas = true
 
-[node name="ray_cast_left" type="RayCast2D" parent="movement_comp"]
+[node name="ray_cast_left" type="RayCast2D" parent="move_comp"]
 position = Vector2(-31, 0)
 collision_mask = 8
 collide_with_areas = true
 
-[node name="ray_cast_vision" type="RayCast2D" parent="movement_comp"]
+[node name="ray_cast_vision" type="RayCast2D" parent="move_comp"]
 collision_mask = 9
 collide_with_areas = true
 
@@ -100,6 +100,6 @@ offset_bottom = -40.0
 show_percentage = false
 
 [connection signal="timeout" from="timer_release" to="move_machine/move_anticipate" method="_on_timer_timeout"]
-[connection signal="timeout" from="timer_attack" to="movement_comp" method="_on_timer_attack_timeout"]
-[connection signal="body_entered" from="vision" to="movement_comp" method="_on_vision_body_entered"]
-[connection signal="body_exited" from="vision" to="movement_comp" method="_on_vision_body_exited"]
+[connection signal="timeout" from="timer_attack" to="move_comp" method="_on_timer_attack_timeout"]
+[connection signal="body_entered" from="vision" to="move_comp" method="_on_vision_body_entered"]
+[connection signal="body_exited" from="vision" to="move_comp" method="_on_vision_body_exited"]

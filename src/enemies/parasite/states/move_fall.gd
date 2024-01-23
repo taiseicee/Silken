@@ -9,4 +9,4 @@ func process_physics(delta: float):
 		state_transition.emit(self, "move_idle")
 		return
 	
-	movement_comp.handle_gravity(delta)
+	move_comp.handle_gravity(delta)

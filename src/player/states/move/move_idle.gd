@@ -11,7 +11,7 @@ func process_physics(_delta: float):
 		state_transition.emit(self, "move_swing")
 		return
 	
-	if not movement_comp.is_on_floor():
+	if not move_comp.is_on_floor():
 		state_transition.emit(self, "move_fall")
 		return
 	
