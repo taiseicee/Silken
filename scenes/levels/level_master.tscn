@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djioxlhbtjm8o"]
+[gd_scene load_steps=9 format=3 uid="uid://djioxlhbtjm8o"]
 
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_j6dkt"]
 [ext_resource type="PackedScene" uid="uid://cebpjnkfn2pai" path="res://scenes/projectiles/web.tscn" id="1_wbdmu"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://scenes/levels/vignette.gdshader" id="3_a3xu5"]
 [ext_resource type="Texture2D" uid="uid://bxaf3wga1deay" path="res://assets/graphics/levels/silken_background_1.png" id="5_b1q3j"]
 [ext_resource type="Texture2D" uid="uid://de6tirqw72g7y" path="res://assets/graphics/levels/silken_background_2.png" id="6_dunlj"]
-[ext_resource type="PackedScene" uid="uid://bwpa4j38qm3bn" path="res://scenes/levels/level_test.tscn" id="7_iqpim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qvbx5"]
 shader = ExtResource("3_a3xu5")
@@ -24,12 +23,10 @@ script = ExtResource("1_j6dkt")
 
 [node name="web" parent="." instance=ExtResource("1_wbdmu")]
 
-[node name="level_test" parent="." instance=ExtResource("7_iqpim")]
-
 [node name="projectiles" type="Node" parent="."]
 
 [node name="player" parent="." instance=ExtResource("2_1you5")]
-position = Vector2(368, 489)
+position = Vector2(1118, 1004)
 
 [node name="camera" type="Camera2D" parent="player"]
 position_smoothing_enabled = true
@@ -51,7 +48,7 @@ environment = SubResource("Environment_hhtk3")
 [node name="parallax_background" type="ParallaxBackground" parent="."]
 
 [node name="parallax_layer_1" type="ParallaxLayer" parent="parallax_background"]
-motion_mirroring = Vector2(1920, 0)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="background_1" type="Sprite2D" parent="parallax_background/parallax_layer_1"]
 z_index = -2

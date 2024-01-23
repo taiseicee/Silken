@@ -5,7 +5,8 @@ extends Node2D
 
 @onready var character_body: Sprite2D = $"../player_body"
 @onready var character_head: Sprite2D = $"../player_head"
-@onready var ray_cast_down: RayCast2D = $ray_cast_down
+@onready var ray_cast_down_right: RayCast2D = $ray_cast_down_right
+@onready var ray_cast_down_left: RayCast2D = $ray_cast_down_left
 @onready var timer_attack: Timer = $timer_attack
 
 @export var web_length_multiplier_x = 30
@@ -68,7 +69,7 @@ func head_return(delta):
 	character_head.position = character_head.position.lerp(Vector2.ZERO, delta * head_turn_speed)
 
 func is_on_floor() -> bool:
-	return ray_cast_down.is_colliding()
+	return ray_cast_down_right.is_colliding() or ray_cast_down_left.is_colliding()
 
 func set_first_key(key: Key) -> bool:
 	#print("First Key:")
