@@ -5,13 +5,15 @@ func enter_state():
 	#print("Web Machine > Idle State")
 
 func process_frame(delta: float):
+	super(delta)
 	move_comp.head_return(delta)
-	
+
 	if Input.is_action_pressed("primary_action"):
 		action_comp.attack()
 
 func process_input(event: InputEvent):
 	super(event)
+	
 	var key_event := event as InputEventKey
 	if not key_event || not event.is_pressed():
 		return

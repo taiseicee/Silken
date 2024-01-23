@@ -8,10 +8,10 @@ var web_projectile_scene: PackedScene = preload("res://scenes/projectiles/web_pr
 
 func _on_player_spawn_web_rope(web_direction, web_length):
 	var pivot_point = player.global_position + web_length * web_direction
-	web.shoot_web(player, pivot_point, web_length)
+	web.shoot_web(player, pivot_point)
 
 func _on_player_swing():
-	web.connect_to_body()
+	web.connect_to_body(player)
 
 func _on_player_dismiss_web():
 	web.disconnect_from_body()
