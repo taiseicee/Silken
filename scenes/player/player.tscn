@@ -13,8 +13,9 @@
 [ext_resource type="Script" path="res://src/player/states/move/move_swing.gd" id="7_uinno"]
 [ext_resource type="Script" path="res://src/player/states/web/web_swing.gd" id="12_2vqid"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1p20"]
-size = Vector2(49, 68)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ell10"]
+radius = 27.0
+height = 78.0
 
 [sub_resource type="Animation" id="Animation_62wuv"]
 resource_name = "web_aim"
@@ -134,9 +135,9 @@ lock_rotation = true
 script = ExtResource("1_x0jux")
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(-2.99998, 3.49999)
+position = Vector2(-1.086e-05, 3)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_x1p20")
+shape = SubResource("CapsuleShape2D_ell10")
 
 [node name="player_body" type="Sprite2D" parent="."]
 scale = Vector2(0.18, 0.18)
@@ -158,7 +159,14 @@ script = ExtResource("3_no4fu")
 [node name="key_manager" type="Node" parent="movement_comp"]
 script = ExtResource("3_kta7w")
 
-[node name="ray_cast_down" type="RayCast2D" parent="movement_comp"]
+[node name="ray_cast_down_left" type="RayCast2D" parent="movement_comp"]
+position = Vector2(-27, 0)
+target_position = Vector2(0, 40)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="ray_cast_down_right" type="RayCast2D" parent="movement_comp"]
+position = Vector2(27, 0)
 target_position = Vector2(0, 40)
 collision_mask = 8
 collide_with_areas = true
