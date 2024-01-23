@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://djioxlhbtjm8o"]
+[gd_scene load_steps=9 format=3 uid="uid://djioxlhbtjm8o"]
 
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_j6dkt"]
 [ext_resource type="PackedScene" uid="uid://cebpjnkfn2pai" path="res://scenes/projectiles/web.tscn" id="1_wbdmu"]
 [ext_resource type="PackedScene" uid="uid://pry5mw621egt" path="res://scenes/player/player.tscn" id="2_1you5"]
 [ext_resource type="Shader" path="res://scenes/levels/vignette.gdshader" id="3_a3xu5"]
-[ext_resource type="PackedScene" uid="uid://bajdafg701uf6" path="res://scenes/levels/level_tutorial.tscn" id="3_cgq26"]
 [ext_resource type="Texture2D" uid="uid://bxaf3wga1deay" path="res://assets/graphics/levels/silken_background_1.png" id="5_b1q3j"]
 [ext_resource type="Texture2D" uid="uid://de6tirqw72g7y" path="res://assets/graphics/levels/silken_background_2.png" id="6_dunlj"]
 
@@ -23,8 +22,6 @@ glow_blend_mode = 1
 script = ExtResource("1_j6dkt")
 
 [node name="web" parent="." instance=ExtResource("1_wbdmu")]
-
-[node name="level_tutorial" parent="." instance=ExtResource("3_cgq26")]
 
 [node name="projectiles" type="Node" parent="."]
 
