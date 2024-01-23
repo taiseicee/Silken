@@ -4,7 +4,6 @@ func enter_state():
 	super()
 	#print("Move Machine > Swing State")
 	move_comp.swing()
-	character.gravity_scale = 1
 	animation_player.queue("move_swing")
 
 func process_physics(_delta: float):

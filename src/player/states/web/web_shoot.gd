@@ -3,27 +3,24 @@ extends State
 func enter_state():
 	super()
 	#print("Web Machine > Shoot State")
-	move_comp.shoot()
+	action_comp.shoot()
 
 func process_frame(delta: float):
-	if character.move_machine.is_in_state("move_swing"):
-		move_comp.in_swing_turn(delta)
-	elif character.move_machine.is_in_state("move_idle") or character.move_machine.is_in_state("move_fall"):
-		move_comp.in_shoot_turn(delta)
+	action_comp.in_shoot_turn(delta)
 	
 	if Input.is_action_pressed("primary_action"):
-		move_comp.attack()
+		action_comp.attack()
 	
 func process_input(_event: InputEvent):
-	if Input.is_key_pressed(move_comp.first_key) && not Input.is_key_pressed(move_comp.second_key):
-		move_comp.second_key = null
+	if Input.is_key_pressed(action_comp.first_key) && not Input.is_key_pressed(action_comp.second_key):
+		action_comp.second_key = null
 		state_transition.emit(self, "web_aim")
 		character.dismiss_web.emit()
 		return
-	if not Input.is_key_pressed(move_comp.first_key) && Input.is_key_pressed(move_comp.second_key):
+	if not Input.is_key_pressed(action_comp.first_key) && Input.is_key_pressed(action_comp.second_key):
 		state_transition.emit(self, "web_swing")
 		return
-	if not Input.is_key_pressed(move_comp.first_key) && not Input.is_key_pressed(move_comp.second_key):
+	if not Input.is_key_pressed(action_comp.first_key) && not Input.is_key_pressed(action_comp.second_key):
 		state_transition.emit(self, "web_idle")
 		character.dismiss_web.emit()
 		return

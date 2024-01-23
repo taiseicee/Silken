@@ -3,19 +3,22 @@ class_name Player
 
 @onready var move_machine: FiniteStateMachine = $move_machine
 @onready var web_machine: FiniteStateMachine = $web_machine
-@onready var movement_comp: Node = $movement_comp
-@onready var key_manager: Node = $movement_comp/key_manager
+@onready var move_comp: Node2D = $move_comp
+@onready var action_comp: Node2D = $web_comp
 @onready var animation_player_body: AnimationPlayer = $animation_player_body
 @onready var animation_player_head: AnimationPlayer = $animation_player_head
 
-signal spawn_web
-signal swinging
+@export var head_turn_speed: float = 10
+@export var head_turn_distance: float = 10
+
+signal spawn_web_rope(web_direction: Vector2, web_length: float)
+signal swing
 signal dismiss_web
 signal spawn_web_attack(direction: Vector2)
 
 func _ready():
-	move_machine.init(self, movement_comp, null, animation_player_body)
-	web_machine.init(self, movement_comp, null, animation_player_head)
+	move_machine.init(self, move_comp, action_comp, animation_player_body)
+	web_machine.init(self, move_comp, action_comp, animation_player_head)
 
 func _process(delta: float):
 	move_machine.process_frame(delta)

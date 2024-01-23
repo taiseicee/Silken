@@ -6,11 +6,11 @@
 [ext_resource type="Script" path="res://src/player/move_comp.gd" id="3_xvo7w"]
 [ext_resource type="Script" path="res://src/player/states/web/web_idle.gd" id="4_s8034"]
 [ext_resource type="Script" path="res://src/finite_state_machine.gd" id="5_1spff"]
+[ext_resource type="Script" path="res://src/player/web_comp.gd" id="5_lc221"]
 [ext_resource type="Script" path="res://src/player/states/web/web_aim.gd" id="5_lxemi"]
 [ext_resource type="Script" path="res://src/player/states/web/web_shoot.gd" id="6_nj7vb"]
 [ext_resource type="Script" path="res://src/player/states/move/move_fall.gd" id="6_qkbaq"]
 [ext_resource type="Script" path="res://src/player/states/move/move_idle.gd" id="7_1sxsp"]
-[ext_resource type="Script" path="res://src/player/states/move/move_swing.gd" id="7_uinno"]
 [ext_resource type="Script" path="res://src/player/states/web/web_swing.gd" id="12_2vqid"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ell10"]
@@ -171,7 +171,13 @@ target_position = Vector2(0, 40)
 collision_mask = 8
 collide_with_areas = true
 
-[node name="timer_attack" type="Timer" parent="move_comp"]
+[node name="web_comp" type="Node2D" parent="."]
+script = ExtResource("5_lc221")
+
+[node name="key_manager" type="Node" parent="web_comp"]
+script = ExtResource("3_kta7w")
+
+[node name="timer_attack" type="Timer" parent="web_comp"]
 wait_time = 0.7
 one_shot = true
 
@@ -184,9 +190,6 @@ script = ExtResource("6_qkbaq")
 
 [node name="move_idle" type="Node" parent="move_machine"]
 script = ExtResource("7_1sxsp")
-
-[node name="move_swing" type="Node" parent="move_machine"]
-script = ExtResource("7_uinno")
 
 [node name="web_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("5_1spff")
@@ -216,4 +219,5 @@ libraries = {
 "": SubResource("AnimationLibrary_4jwl0")
 }
 
-[connection signal="timeout" from="move_comp/timer_attack" to="move_comp" method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="web_comp/timer_attack" to="move_comp" method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="web_comp/timer_attack" to="web_comp" method="_on_timer_attack_timeout"]
