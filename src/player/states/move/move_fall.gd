@@ -4,6 +4,8 @@ func enter_state():
 	super()
 	#print("Move Machine > Fall State")
 	character.gravity_scale = 1
+	#animation_player.play("move_fall")
+	animation_player.queue("move_fall")
 
 func process_physics(_delta: float):
 	if movement_comp.is_on_floor():
@@ -11,5 +13,6 @@ func process_physics(_delta: float):
 		character.gravity_scale = 0
 		return
 	
-	if character.can_swing:
+	if character.web_machine.is_in_state("web_shoot"):
 		state_transition.emit(self, "move_swing")
+		return

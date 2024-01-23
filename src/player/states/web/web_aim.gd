@@ -3,6 +3,7 @@ extends State
 func enter_state():
 	super()
 	#print("Web Machine > Aim State")
+	animation_player.play("web_aim")
 
 func process_frame(delta: float):
 	movement_comp.head_return(delta)
@@ -23,3 +24,5 @@ func process_input(event: InputEvent):
 	if is_valid_key:
 		state_transition.emit(self, "web_shoot")
 
+func exit_state():
+	animation_player.play_backwards("web_aim")

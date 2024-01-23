@@ -4,6 +4,7 @@ class_name State
 
 var character: PhysicsBody2D
 var movement_comp: Node
+var animation_player: AnimationPlayer
 
 signal state_transition
 
@@ -11,7 +12,9 @@ func enter_state():
 	pass
 
 func exit_state():
-	pass
+	if animation_player:
+		animation_player.stop()
+		animation_player.clear_queue()
 
 func process_frame(_delta: float):
 	pass

@@ -6,7 +6,7 @@ var start_state: State
 var current_state: State
 var states: Dictionary
 
-func init(character: PhysicsBody2D, movement_comp: Node):
+func init(character: PhysicsBody2D, movement_comp: Node, animation_player: AnimationPlayer = null):
 	for child in get_children():
 		var state := child as State
 		if not state:
@@ -15,6 +15,8 @@ func init(character: PhysicsBody2D, movement_comp: Node):
 		state.state_transition.connect(change_state)
 		state.character = character
 		state.movement_comp = movement_comp
+		if animation_player:
+			state.animation_player = animation_player
 	
 	assert(start_state, "ERROR: You must give a start state")
 	

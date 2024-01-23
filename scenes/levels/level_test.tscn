@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwpa4j38qm3bn"]
+[gd_scene load_steps=6 format=3 uid="uid://bwpa4j38qm3bn"]
 
-[ext_resource type="Script" path="res://src/levels/level.gd" id="1_0eqc5"]
 [ext_resource type="PackedScene" uid="uid://dxai78xtjfa86" path="res://scenes/enemies/parasite.tscn" id="5_naqix"]
 [ext_resource type="PackedScene" uid="uid://4wusrim4iklv" path="res://scenes/items/cocoon.tscn" id="5_wlqdh"]
 [ext_resource type="Texture2D" uid="uid://dbo3x583cynbi" path="res://assets/graphics/levels/silken_test_tile_map_1.png" id="6_mjptv"]
@@ -587,7 +586,6 @@ physics_layer_0/collision_mask = 15
 sources/0 = SubResource("TileSetAtlasSource_2bkig")
 
 [node name="level_test" type="Node2D"]
-script = ExtResource("1_0eqc5")
 metadata/_edit_horizontal_guides_ = [-362.0, -228.0]
 
 [node name="tile_map" type="TileMap" parent="."]
