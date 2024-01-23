@@ -37,7 +37,8 @@ func in_shoot_turn(delta):
 	character_body.flip_h = direction_to_web.x > 0
 	if direction_to_web.x * character_head.offset.x < 0:
 		character_head.offset.x *= -1
-	character_head.position = character_head.position.lerp(direction_to_web.normalized() * character.head_turn_distance, delta * character.head_turn_speed)
+	var new_head_point: Vector2 = direction_to_web.normalized() * character.head_turn_distance
+	character_head.position = character_head.position.lerp(new_head_point, delta * character.head_turn_speed)
 
 func attack():
 	if not can_attack:

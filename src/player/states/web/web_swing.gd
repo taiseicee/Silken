@@ -7,6 +7,8 @@ func enter_state():
 
 func process_frame(delta: float):
 	super(delta)
+	move_comp.in_swing_turn(delta)
+	
 	if Input.is_action_pressed("primary_action"):
 		action_comp.attack()
 

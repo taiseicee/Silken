@@ -7,7 +7,7 @@ extends Node2D
 @onready var ray_cast_down_left: RayCast2D = $ray_cast_down_left
 
 func in_swing_turn(delta):
-	if  -5 < character.linear_velocity.x and character.linear_velocity.x < 5:
+	if -5 < character.linear_velocity.x and character.linear_velocity.x < 5:
 		return
 	character_head.flip_h = character.linear_velocity.x > 0
 	character_body.flip_h = character.linear_velocity.x > 0
