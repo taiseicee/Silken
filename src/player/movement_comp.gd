@@ -56,6 +56,8 @@ func in_shoot_turn(delta):
 	character_head.position = character_head.position.lerp(direction_to_web.normalized() * head_turn_distance, delta * head_turn_speed)
 
 func in_swing_turn(delta):
+	if  -5 < character.linear_velocity.x and character.linear_velocity.x < 5:
+		return
 	character_head.flip_h = character.linear_velocity.x > 0
 	character_body.flip_h = character.linear_velocity.x > 0
 	if character.linear_velocity.x * character_head.offset.x < 0:

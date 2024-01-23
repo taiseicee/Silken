@@ -13,6 +13,6 @@ func process_physics(_delta: float):
 		character.gravity_scale = 0
 		return
 	
-	if character.web_machine.is_in_state("web_shoot"):
+	if character.web_machine.is_in_state("web_swing"):
 		state_transition.emit(self, "move_swing")
 		return

@@ -7,7 +7,7 @@ func enter_state():
 	animation_player.queue("move_idle")
 
 func process_physics(_delta: float):
-	if character.web_machine.is_in_state("web_shoot"):
+	if character.web_machine.is_in_state("web_swing"):
 		state_transition.emit(self, "move_swing")
 		return
 	

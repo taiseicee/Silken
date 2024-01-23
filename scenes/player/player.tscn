@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://pry5mw621egt"]
+[gd_scene load_steps=22 format=3 uid="uid://pry5mw621egt"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_x0jux"]
 [ext_resource type="Texture2D" uid="uid://eofr0o1p153n" path="res://assets/graphics/player/silken_spritesheet_spider.png" id="2_wpujw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/player/states/move/move_fall.gd" id="6_qkbaq"]
 [ext_resource type="Script" path="res://src/player/states/move/move_idle.gd" id="7_1sxsp"]
 [ext_resource type="Script" path="res://src/player/states/move/move_swing.gd" id="7_uinno"]
+[ext_resource type="Script" path="res://src/player/states/web/web_swing.gd" id="12_2vqid"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1p20"]
 size = Vector2(49, 68)
@@ -191,6 +192,9 @@ script = ExtResource("4_s8034")
 
 [node name="web_shoot" type="Node" parent="web_machine"]
 script = ExtResource("6_nj7vb")
+
+[node name="web_swing" type="Node" parent="web_machine"]
+script = ExtResource("12_2vqid")
 
 [node name="animation_player_head" type="AnimationPlayer" parent="."]
 root_node = NodePath("../animation_player_body")

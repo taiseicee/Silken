@@ -8,8 +8,6 @@ class_name Player
 @onready var animation_player_body: AnimationPlayer = $animation_player_body
 @onready var animation_player_head: AnimationPlayer = $animation_player_head
 
-var can_swing: bool = false
-
 signal spawn_web
 signal swinging
 signal dismiss_web

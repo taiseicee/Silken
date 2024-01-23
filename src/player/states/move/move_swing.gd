@@ -8,7 +8,7 @@ func enter_state():
 	animation_player.queue("move_swing")
 
 func process_physics(_delta: float):
-	if character.web_machine.is_in_state("web_shoot"):
+	if character.web_machine.is_in_state("web_swing"):
 		return
 	
 	if movement_comp.is_on_floor():
