@@ -21,8 +21,10 @@ func _ready():
 	web_machine.init(self, move_comp, action_comp, animation_player_head)
 
 func _process(delta: float):
-	if globals.player_health <= 0:
-		print("dead")
+	if globals.player_health <= 0 && not move_machine.is_in_state("move_death"):
+		move_machine.force_change_state("move_death")
+	if globals.player_health <= 0 && not web_machine.is_in_state("web_idle"):
+		web_machine.force_change_state("web_idle")
 	move_machine.process_frame(delta)
 	web_machine.process_frame(delta)
 

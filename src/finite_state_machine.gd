@@ -47,7 +47,6 @@ func force_change_state(new_state_name: String):
 	current_state = new_state
 	current_state.enter_state()
 
-
 func change_state(source_state: State, new_state_name: String):
 	if source_state != current_state:
 		print(
