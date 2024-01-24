@@ -7,12 +7,18 @@ func enter_state():
 func process_frame(delta: float):
 	super(delta)
 	move_comp.head_return(delta)
+	
+	if character.move_machine.is_in_state("move_death"):
+		return
 
 	if Input.is_action_just_pressed("primary_action"):
 		action_comp.dash()
 
 func process_input(event: InputEvent):
 	super(event)
+	
+	if character.move_machine.is_in_state("move_death"):
+		return
 	
 	var key_event := event as InputEventKey
 	if not key_event || not event.is_pressed():

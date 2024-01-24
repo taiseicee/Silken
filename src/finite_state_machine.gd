@@ -32,6 +32,22 @@ func init(character: PhysicsBody2D,
 func is_in_state(state_name: String):
 	return current_state.name.to_lower() == state_name
 
+func force_change_state(new_state_name: String):
+	var new_state = states.get(new_state_name.to_lower())
+	
+	assert(new_state, "ERROR: Invalid state")
+	
+	if current_state == new_state:
+		print("WARNING: Attempting to force change into the current state %s" % [new_state_name])
+	
+	if current_state:
+		var exit_callable = Callable(current_state, "Exit")
+		exit_callable.call_deferred()
+	
+	current_state = new_state
+	current_state.enter_state()
+
+
 func change_state(source_state: State, new_state_name: String):
 	if source_state != current_state:
 		print(
