@@ -9,8 +9,8 @@ func process_frame(delta: float):
 	super(delta)
 	move_comp.head_return(delta)
 	
-	if Input.is_action_pressed("primary_action"):
-		action_comp.attack()
+	if Input.is_action_just_pressed("primary_action"):
+		action_comp.dash()
 
 func process_input(event: InputEvent):
 	super(event)

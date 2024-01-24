@@ -20,6 +20,7 @@ script = ExtResource("1_cyxa7")
 shape = SubResource("CapsuleShape2D_1pmgs")
 
 [node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_f42y5")
 
 [node name="area_collect" type="Area2D" parent="."]

@@ -9,8 +9,8 @@ func process_frame(delta: float):
 	super(delta)
 	action_comp.in_shoot_turn(delta)
 	
-	if Input.is_action_pressed("primary_action"):
-		action_comp.attack()
+	if Input.is_action_just_pressed("primary_action"):
+		action_comp.dash()
 		
 	if Input.is_key_pressed(action_comp.first_key) && not Input.is_key_pressed(action_comp.second_key):
 		action_comp.second_key = null
