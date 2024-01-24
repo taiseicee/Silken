@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://wbneb02dceik"]
+
+[ext_resource type="Texture2D" uid="uid://bxofc1a4xh50n" path="res://assets/graphics/user_interface/silken_health_background.png" id="1_bp18r"]
+[ext_resource type="Script" path="res://src/user_interface/user_interface.gd" id="1_fsah7"]
+[ext_resource type="Texture2D" uid="uid://crfd8b7d12x87" path="res://assets/graphics/user_interface/silken_health_top.png" id="2_loj6n"]
+[ext_resource type="Texture2D" uid="uid://dmuoqgedcfjtl" path="res://assets/graphics/user_interface/silken_health_progress.png" id="3_e6i2t"]
+[ext_resource type="Texture2D" uid="uid://cdcm54c0lia74" path="res://assets/graphics/items/silken_cocoon.png" id="4_mgt30"]
+
+[node name="user_interface" type="CanvasLayer"]
+script = ExtResource("1_fsah7")
+
+[node name="ui_container" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.05
+anchor_right = 0.3
+anchor_bottom = 0.05
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="bar_health" type="TextureProgressBar" parent="ui_container"]
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("1_bp18r")
+texture_over = ExtResource("2_loj6n")
+texture_progress = ExtResource("3_e6i2t")
+
+[node name="filler" type="Control" parent="ui_container"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="icon_cocoon" type="TextureRect" parent="ui_container"]
+layout_mode = 2
+texture = ExtResource("4_mgt30")
+expand_mode = 3
+
+[node name="label_cocoon" type="Label" parent="ui_container"]
+layout_mode = 2
+text = "0"
+vertical_alignment = 1

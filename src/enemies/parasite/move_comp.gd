@@ -123,8 +123,7 @@ func attack():
 		return
 	timer_attack.start()
 	can_attack = false
-	globals.health -= attack_damage
-	print("Player Health: - %d" % [globals.health])
+	globals.add_player_health(-attack_damage)
 
 func handle_gravity(delta: float):
 	character.velocity.y += gravity * delta

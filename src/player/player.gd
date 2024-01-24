@@ -15,7 +15,6 @@ class_name Player
 signal spawn_web_rope(web_direction: Vector2, web_length: float)
 signal swing
 signal dismiss_web
-signal spawn_web_attack(direction: Vector2)
 
 func _ready():
 	move_machine.init(self, move_comp, action_comp, animation_player_body)
@@ -34,5 +33,4 @@ func _physics_process(delta: float):
 	web_machine.process_physics(delta)
 
 func collect_cocoon():
-	globals.cocoon_num += 1
-	print("- Coccons Collected: %d" % [globals.cocoon_num])
+	globals.add_cocoon()
