@@ -3,7 +3,8 @@ extends Node
 class_name State
 
 var character: PhysicsBody2D
-var movement_comp: Node
+var move_comp: Node
+var action_comp: Node
 var animation_player: AnimationPlayer
 
 signal state_transition

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cebpjnkfn2pai"]
+
+[ext_resource type="Script" path="res://src/projectiles/web.gd" id="1_m2bvc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hl4gt"]
+
+[node name="web_rope" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_m2bvc")
+
+[node name="circle_collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hl4gt")
+
+[node name="web_spring" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("..")
+node_b = NodePath("..")
+
+[node name="web_line" type="Line2D" parent="."]
+width = 5.0
+default_color = Color(0.890196, 0.886275, 0.8, 1)
+begin_cap_mode = 2

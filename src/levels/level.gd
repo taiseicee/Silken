@@ -3,18 +3,17 @@ extends Node2D
 @onready var player: RigidBody2D = $player
 @onready var projectiles: Node = $projectiles
 @onready var web: Web = $web
-@onready var camera: Camera2D = $player/camera
 
 var web_projectile_scene: PackedScene = preload("res://scenes/projectiles/web_projectile.tscn")
 
-func _on_player_spawn_web(pivot_point: Vector2):
+func _on_player_spawn_web_rope(web_direction, web_length):
+	var pivot_point = player.global_position + web_length * web_direction
 	web.shoot_web(player, pivot_point)
 
-func _on_player_swinging(pivot_point: Vector2, web_length: float):
-	web.connect_to_body(player, pivot_point, web_length)
+func _on_player_swing():
+	web.connect_to_body(player)
 
 func _on_player_dismiss_web():
-	camera.offset = Vector2.ZERO
 	web.disconnect_from_body()
 
 func _on_player_spawn_web_attack(direction: Vector2):

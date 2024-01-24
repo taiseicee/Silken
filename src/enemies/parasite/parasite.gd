@@ -3,7 +3,7 @@ class_name Parasite
 
 @onready var move_machine: FiniteStateMachine = $move_machine
 @onready var attack_machine: FiniteStateMachine = $attack_machine
-@onready var movement_comp: Node = $movement_comp
+@onready var move_comp: Node = $move_comp
 @onready var health_bar: ProgressBar = $health_bar
 
 @export var health_max: int = 100
@@ -11,9 +11,9 @@ class_name Parasite
 func _ready():
 	health_bar.value = health_max
 	health_bar.max_value = health_max
-	movement_comp.init()
-	attack_machine.init(self, movement_comp)
-	move_machine.init(self, movement_comp)
+	move_comp.init()
+	attack_machine.init(self, move_comp)
+	move_machine.init(self, move_comp)
 
 func _process(delta: float):
 	move_machine.process_frame(delta)

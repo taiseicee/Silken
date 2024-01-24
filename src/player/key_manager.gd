@@ -1,5 +1,7 @@
 extends Node
 
+var invalid_location = Vector2(-1, -1)
+
 var key_locations: Dictionary = {
 	"49" = Vector2(0, 0), #KEY_1 - 1
 	"50" = Vector2(1, 0), #KEY_2 - 2
