@@ -12,12 +12,14 @@ var first_key
 var second_key
 
 func _ready():
-	if tutorial_type == 0:
-		animation_player.play("press_a")
+	match tutorial_type:
+		0: animation_player.play("press_a")
+		1: animation_player.play("press_space")
 
 func _unhandled_input(event: InputEvent):
-	if tutorial_type == 0:
-		progress_swing_tutorial(event)
+	match tutorial_type:
+		0: progress_swing_tutorial(event)
+		1: progress_dash_tutorial(event)
 
 func progress_swing_tutorial(event: InputEvent):
 	var key_event := event as InputEventKey
@@ -70,6 +72,14 @@ func release_first_key(key_event: InputEventKey):
 		return
 	
 	stage = 3
+
+func progress_dash_tutorial(event: InputEvent):
+	var key_event := event as InputEventKey
+	if not key_event: return
+	if not key_event.is_pressed(): return
+	if key_event.get_keycode_with_modifiers() != KEY_SPACE: return
+	
+	kill_tutorial()
 
 func kill_tutorial():
 	queue_free()
