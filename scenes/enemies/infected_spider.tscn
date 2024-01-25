@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxonlbly16ihr"]
+
+[ext_resource type="Texture2D" uid="uid://df3mpqdcmwcm4" path="res://assets/graphics/enemies/silken_infected_spider.png" id="1_tkcy4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5hx1h"]
+radius = 28.0
+
+[node name="infected_spider" type="CharacterBody2D"]
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5hx1h")
+
+[node name="player_body" type="Sprite2D" parent="."]
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_tkcy4")
+hframes = 4
+vframes = 3
+frame = 2
+
+[node name="player_head" type="Sprite2D" parent="."]
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_tkcy4")
+offset = Vector2(-150, -125)
+hframes = 4
+vframes = 3
