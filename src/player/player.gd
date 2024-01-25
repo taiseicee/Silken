@@ -11,6 +11,7 @@ class_name Player
 @export var head_turn_speed: float = 10
 @export var head_turn_distance: float = 10
 @export var dash_damage = 50
+@export var direction: float = -1
 
 signal spawn_web_rope(web_direction: Vector2, web_length: float)
 signal swing

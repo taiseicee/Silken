@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://dhuvd3tu2enxw"]
+
+[ext_resource type="Script" path="res://src/enemies/enemy_base.gd" id="1_rcpis"]
+[ext_resource type="Script" path="res://src/finite_state_machine.gd" id="2_aqoi1"]
+[ext_resource type="Script" path="res://src/enemies/base/move_comp.gd" id="2_irhwt"]
+[ext_resource type="Script" path="res://src/enemies/base/attack_comp.gd" id="3_pnsa5"]
+[ext_resource type="Script" path="res://src/enemies/base/states/move/move_death.gd" id="5_c3pfo"]
+[ext_resource type="Script" path="res://src/enemies/base/states/move/move_fall.gd" id="6_w7v5g"]
+[ext_resource type="Script" path="res://src/enemies/base/states/attack/attack_idle.gd" id="7_l7hno"]
+[ext_resource type="Script" path="res://src/enemies/base/states/move/move_idle.gd" id="7_vncnm"]
+[ext_resource type="Script" path="res://src/enemies/base/states/attack/attack_alert.gd" id="8_rfpxx"]
+[ext_resource type="Script" path="res://src/enemies/base/states/attack/attack_attack.gd" id="9_3pj44"]
+[ext_resource type="Script" path="res://src/enemies/base/states/attack/attack_patrol.gd" id="11_7784r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5hx1h"]
+radius = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2ajb"]
+radius = 415.0
+
+[node name="enemy_base" type="CharacterBody2D"]
+script = ExtResource("1_rcpis")
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5hx1h")
+
+[node name="move_comp" type="Node2D" parent="."]
+script = ExtResource("2_irhwt")
+
+[node name="ray_cast_left" type="RayCast2D" parent="move_comp"]
+position = Vector2(-27, 0)
+target_position = Vector2(0, 35)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="ray_cast_right" type="RayCast2D" parent="move_comp"]
+position = Vector2(27, 0)
+target_position = Vector2(0, 35)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="attack_comp" type="Node2D" parent="."]
+script = ExtResource("3_pnsa5")
+
+[node name="line_of_sight" type="RayCast2D" parent="attack_comp"]
+collision_mask = 9
+collide_with_areas = true
+
+[node name="timer_attack" type="Timer" parent="attack_comp"]
+
+[node name="move_machine" type="Node" parent="."]
+script = ExtResource("2_aqoi1")
+
+[node name="move_death" type="Node" parent="move_machine"]
+script = ExtResource("5_c3pfo")
+
+[node name="move_fall" type="Node" parent="move_machine"]
+script = ExtResource("6_w7v5g")
+
+[node name="move_idle" type="Node" parent="move_machine"]
+script = ExtResource("7_vncnm")
+
+[node name="attack_machine" type="Node" parent="."]
+script = ExtResource("2_aqoi1")
+
+[node name="attack_alert" type="Node" parent="attack_machine"]
+script = ExtResource("8_rfpxx")
+
+[node name="attack_attack" type="Node" parent="attack_machine"]
+script = ExtResource("9_3pj44")
+
+[node name="attack_idle" type="Node" parent="attack_machine"]
+script = ExtResource("7_l7hno")
+
+[node name="attack_patrol" type="Node" parent="attack_machine"]
+script = ExtResource("11_7784r")
+
+[node name="vision" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="vision_area" type="CollisionShape2D" parent="vision"]
+shape = SubResource("CircleShape2D_f2ajb")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+modulate = Color(0.839216, 0.337255, 0.329412, 1)
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 32.0
+offset_bottom = -40.0
+value = 100.0
+show_percentage = false
+
+[connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="vision" to="." method="_on_vision_body_exited"]

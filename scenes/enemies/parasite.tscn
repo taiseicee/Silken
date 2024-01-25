@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cvpeigdvun8gr" path="res://assets/graphics/enemies/silken_spritesheet_parasite.png" id="2_amdcb"]
 [ext_resource type="Script" path="res://src/enemies/parasite/move_comp.gd" id="3_dfwlk"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_anticipate.gd" id="5_wcfpq"]
-[ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_idle.gd" id="6_btqq8"]
+[ext_resource type="Script" path="res://src/enemies/base/states/move/move_idle.gd" id="6_btqq8"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_release.gd" id="7_uv2cc"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_patrol.gd" id="8_1ebfo"]
-[ext_resource type="Script" path="res://src/enemies/parasite/states/move_fall.gd" id="8_e8vgs"]
+[ext_resource type="Script" path="res://src/enemies/base/states/move/move_fall.gd" id="8_e8vgs"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_pursuit.gd" id="9_eyrd4"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_attack.gd" id="10_gijgc"]
 
@@ -16,7 +16,7 @@
 radius = 31.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35wfw"]
-radius = 413.31
+radius = 415.0
 
 [node name="parasite" type="CharacterBody2D"]
 collision_layer = 2
