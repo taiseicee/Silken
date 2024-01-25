@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://bajdafg701uf6"]
 
 [ext_resource type="Script" path="res://src/levels/level_chunk.gd" id="1_3rqmg"]
-[ext_resource type="Texture2D" uid="uid://bomi28fswq543" path="res://assets/graphics/levels/silken_tile_map.png" id="2_kqv5p"]
+[ext_resource type="Texture2D" uid="uid://bomi28fswq543" path="res://silken_tile_map.png" id="2_ynoyo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yuo35"]
-texture = ExtResource("2_kqv5p")
+texture = ExtResource("2_ynoyo")
 texture_region_size = Vector2i(100, 100)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)

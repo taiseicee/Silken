@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://pry5mw621egt"]
+[gd_scene load_steps=27 format=3 uid="uid://pry5mw621egt"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_x0jux"]
 [ext_resource type="Texture2D" uid="uid://eofr0o1p153n" path="res://assets/graphics/player/silken_spritesheet_spider.png" id="2_wpujw"]
 [ext_resource type="Script" path="res://src/player/key_manager.gd" id="3_kta7w"]
 [ext_resource type="Script" path="res://src/player/move_comp.gd" id="3_xvo7w"]
+[ext_resource type="PackedScene" uid="uid://dgo2g20oi7pyg" path="res://scenes/player/key_manager.tscn" id="4_hyuuy"]
 [ext_resource type="Script" path="res://src/player/states/web/web_idle.gd" id="4_s8034"]
 [ext_resource type="Script" path="res://src/finite_state_machine.gd" id="5_1spff"]
 [ext_resource type="Script" path="res://src/player/web_comp.gd" id="5_lc221"]
@@ -353,8 +354,7 @@ frame = 7
 [node name="move_comp" type="Node2D" parent="."]
 script = ExtResource("3_xvo7w")
 
-[node name="key_manager" type="Node" parent="move_comp"]
-script = ExtResource("3_kta7w")
+[node name="key_manager" parent="move_comp" instance=ExtResource("4_hyuuy")]
 
 [node name="ray_cast_down_left" type="RayCast2D" parent="move_comp"]
 position = Vector2(-27, 0)
