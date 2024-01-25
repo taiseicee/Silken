@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://c085k8ncurt21"]
+
+[ext_resource type="Texture2D" uid="uid://wriwg4a4b2xt" path="res://assets/graphics/levels/silken_rock.png" id="1_ir20c"]
+[ext_resource type="Script" path="res://src/levels/obstacle/breakable_wall.gd" id="1_y1057"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmljv"]
+radius = 32.0
+height = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkmv2"]
+size = Vector2(96, 88)
+
+[node name="breakable_wall" type="StaticBody2D"]
+collision_layer = 10
+collision_mask = 31
+script = ExtResource("1_y1057")
+
+[node name="capsule_collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fmljv")
+
+[node name="pieces" type="Node2D" parent="."]
+
+[node name="rock" type="Sprite2D" parent="pieces"]
+position = Vector2(-8, 16)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("1_ir20c")
+
+[node name="rock2" type="Sprite2D" parent="pieces"]
+position = Vector2(-16, -8)
+scale = Vector2(0.3, 0.2)
+texture = ExtResource("1_ir20c")
+
+[node name="rock3" type="Sprite2D" parent="pieces"]
+position = Vector2(8, -16)
+scale = Vector2(0.2, 0.25)
+texture = ExtResource("1_ir20c")
+
+[node name="rock4" type="Sprite2D" parent="pieces"]
+position = Vector2(-8, -24)
+scale = Vector2(0.2, 0.25)
+texture = ExtResource("1_ir20c")
+
+[node name="rock5" type="Sprite2D" parent="pieces"]
+position = Vector2(8, -32)
+scale = Vector2(0.23, 0.18)
+texture = ExtResource("1_ir20c")
+
+[node name="rock6" type="Sprite2D" parent="pieces"]
+position = Vector2(16, 16)
+scale = Vector2(0.3552, 0.4352)
+texture = ExtResource("1_ir20c")
+
+[node name="area_hit" type="Area2D" parent="."]
+
+[node name="capsule_collider" type="CollisionShape2D" parent="area_hit"]
+shape = SubResource("RectangleShape2D_qkmv2")
+
+[connection signal="body_entered" from="area_hit" to="." method="_on_area_hit_body_entered"]
