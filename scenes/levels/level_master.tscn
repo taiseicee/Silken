@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bvmgtuympebfw" path="res://scenes/levels/popup_tutorial.tscn" id="4_8u6bv"]
 [ext_resource type="Texture2D" uid="uid://bxaf3wga1deay" path="res://assets/graphics/levels/silken_background_1.png" id="5_b1q3j"]
 [ext_resource type="Texture2D" uid="uid://de6tirqw72g7y" path="res://assets/graphics/levels/silken_background_2.png" id="6_dunlj"]
-[ext_resource type="PackedScene" uid="uid://bwxlscgjwqol" path="res://scenes/levels/level_tutorial.tscn" id="8_lq4qj"]
 [ext_resource type="PackedScene" uid="uid://wbneb02dceik" path="res://scenes/user_interface.tscn" id="8_sicgb"]
+[ext_resource type="PackedScene" uid="uid://bwpa4j38qm3bn" path="res://scenes/levels/level_test.tscn" id="9_3hnr8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qvbx5"]
 shader = ExtResource("3_a3xu5")
@@ -29,7 +29,7 @@ script = ExtResource("1_j6dkt")
 [node name="projectiles" type="Node" parent="."]
 
 [node name="player" parent="." instance=ExtResource("2_1you5")]
-position = Vector2(2100, 3550)
+position = Vector2(-200, 500)
 
 [node name="camera" type="Camera2D" parent="player"]
 position_smoothing_enabled = true
@@ -72,7 +72,7 @@ centered = false
 
 [node name="user_interface" parent="." instance=ExtResource("8_sicgb")]
 
-[node name="level_tutorial" parent="." instance=ExtResource("8_lq4qj")]
+[node name="level_test" parent="." instance=ExtResource("9_3hnr8")]
 
 [connection signal="dismiss_web" from="player" to="." method="_on_player_dismiss_web"]
 [connection signal="spawn_web_rope" from="player" to="." method="_on_player_spawn_web_rope"]

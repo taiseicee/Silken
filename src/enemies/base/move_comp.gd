@@ -6,7 +6,7 @@ extends Node2D
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-func partrol():
+func patrol():
 	character.velocity.x = character.direction * character.base_speed
 	character.move_and_slide()
 	

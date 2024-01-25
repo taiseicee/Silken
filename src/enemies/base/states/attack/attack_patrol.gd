@@ -6,5 +6,5 @@ func enter_state():
 
 func process_physics(_delta):
 	if action_comp.should_pursue():
-		state_transition.emit(self, "attack_alet")
+		state_transition.emit(self, "attack_alert")
 		return

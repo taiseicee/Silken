@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cvpeigdvun8gr" path="res://assets/graphics/enemies/silken_spritesheet_parasite.png" id="2_amdcb"]
 [ext_resource type="Script" path="res://src/enemies/parasite/move_comp.gd" id="3_dfwlk"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_anticipate.gd" id="5_wcfpq"]
-[ext_resource type="Script" path="res://src/enemies/base/states/move/move_idle.gd" id="6_btqq8"]
+[ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_idle.gd" id="6_btqq8"]
+[ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_fall.gd" id="6_c7qeu"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_release.gd" id="7_uv2cc"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_patrol.gd" id="8_1ebfo"]
-[ext_resource type="Script" path="res://src/enemies/base/states/move/move_fall.gd" id="8_e8vgs"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_pursuit.gd" id="9_eyrd4"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_attack.gd" id="10_gijgc"]
 
@@ -59,7 +59,7 @@ start_state = NodePath("move_idle")
 script = ExtResource("5_wcfpq")
 
 [node name="move_fall" type="Node" parent="move_machine"]
-script = ExtResource("8_e8vgs")
+script = ExtResource("6_c7qeu")
 
 [node name="move_idle" type="Node" parent="move_machine"]
 script = ExtResource("6_btqq8")

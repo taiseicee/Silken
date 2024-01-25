@@ -25,4 +25,7 @@ func attack():
 	if not can_attack or not is_within_attack_range(): return
 	timer_attack.start()
 	can_attack = false
-	globals.add_player_health(-character.attack_damage)
+	globals.add_player_health(-character.base_attack_damage)
+
+func _on_timer_attack_timeout():
+	can_attack = true

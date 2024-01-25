@@ -19,6 +19,8 @@ radius = 28.0
 radius = 415.0
 
 [node name="enemy_base" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 8
 script = ExtResource("1_rcpis")
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
@@ -48,8 +50,9 @@ collide_with_areas = true
 
 [node name="timer_attack" type="Timer" parent="attack_comp"]
 
-[node name="move_machine" type="Node" parent="."]
+[node name="move_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("2_aqoi1")
+start_state = NodePath("move_idle")
 
 [node name="move_death" type="Node" parent="move_machine"]
 script = ExtResource("5_c3pfo")
@@ -60,8 +63,9 @@ script = ExtResource("6_w7v5g")
 [node name="move_idle" type="Node" parent="move_machine"]
 script = ExtResource("7_vncnm")
 
-[node name="attack_machine" type="Node" parent="."]
+[node name="attack_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("2_aqoi1")
+start_state = NodePath("attack_patrol")
 
 [node name="attack_alert" type="Node" parent="attack_machine"]
 script = ExtResource("8_rfpxx")
@@ -90,5 +94,6 @@ offset_bottom = -40.0
 value = 100.0
 show_percentage = false
 
+[connection signal="timeout" from="attack_comp/timer_attack" to="attack_comp" method="_on_timer_attack_timeout"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="vision" to="." method="_on_vision_body_exited"]

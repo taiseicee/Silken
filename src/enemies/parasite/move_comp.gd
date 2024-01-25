@@ -18,7 +18,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var preferred_slide_distance: float = 150
 @export var max_descent_angle: float = 75 * PI/180
 
-@export var attack_range: float = 125
+@export var attack_range: float = 75
 @export var attack_damage: int = 10
 
 @export var direction: float = -1

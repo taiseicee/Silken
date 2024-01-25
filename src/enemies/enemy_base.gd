@@ -7,18 +7,19 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = $health_bar
 
 @export var health_max: int = 100
-@export var base_speed: int = 500
-@export var pusue_speed_multiplier: int = 1.2
+@export var base_speed: int = 350
+@export var pusue_speed_multiplier: float = 1.2
 @export var base_attack_damage: int = 10
-@export var attack_range: float = 125
+@export var attack_range: float = 75
+@export var direction: int = -1
 
 var player
 
 func _ready():
 	health_bar.value = health_max
 	health_bar.max_value = health_max
-	attack_machine.init(self, move_comp, attack_comp)
-	attack_machine.init(self, move_comp, attack_comp)
+	move_machine.init(self, move_comp, attack_comp, null)
+	attack_machine.init(self, move_comp, attack_comp, null)
 
 func _process(delta: float):
 	move_machine.process_frame(delta)
@@ -37,6 +38,7 @@ func take_damage(damage_value: int):
 	if health_bar.value > 0: return
 	move_machine.force_change_state("move_death")
 	attack_machine.force_change_state("attack_idle")
+	queue_free()
 
 func _on_vision_body_entered(body):
 	if body is Player:

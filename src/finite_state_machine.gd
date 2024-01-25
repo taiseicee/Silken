@@ -26,10 +26,11 @@ func init(character: PhysicsBody2D,
 	
 	assert(start_state, "ERROR: You must give a start state")
 	
-	start_state.enter_state()
 	current_state = start_state;
+	start_state.enter_state()
 
 func is_in_state(state_name: String):
+	if not current_state: return false
 	return current_state.name.to_lower() == state_name
 
 func force_change_state(new_state_name: String):
