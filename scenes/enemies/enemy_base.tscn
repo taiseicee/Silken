@@ -49,6 +49,7 @@ collision_mask = 9
 collide_with_areas = true
 
 [node name="timer_attack" type="Timer" parent="attack_comp"]
+one_shot = true
 
 [node name="move_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("2_aqoi1")

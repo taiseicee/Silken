@@ -39,3 +39,6 @@ func _physics_process(delta: float):
 
 func collect_cocoon():
 	globals.add_cocoon()
+
+func take_damage(damage: int):
+	globals.add_player_health(-damage)
