@@ -12,4 +12,6 @@ func process_frame(_delta: float):
 		state_transition.emit(self, "attack_patrol")
 		return
 	
+	if action_comp.can_attack:
+		animation_player.queue("attack_shoot")
 	action_comp.attack()

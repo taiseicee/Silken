@@ -13,7 +13,3 @@ func process_frame(delta: float):
 	if character.attack_machine.is_in_state("attack_patrol"):
 		move_comp.patrol()
 		return
-	
-	if character.attack_machine.is_in_state("attack_pursuit"):
-		move_comp.pursue()
-		return

@@ -92,8 +92,8 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="cocoons" type="Node" parent="."]
 
+[node name="projectiles" type="Node" parent="."]
+
 [node name="parasites" type="Node" parent="."]
 
 [node name="infected_spiders" type="Node" parent="."]
-
-[node name="projectiles" type="Node" parent="."]

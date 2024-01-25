@@ -601,6 +601,8 @@ layer_1/tile_data = PackedInt32Array(196615, 65536, 0, 196616, 65536, 0, 196617,
 [node name="parasite" parent="." instance=ExtResource("5_naqix")]
 position = Vector2(1200, 230)
 
+[node name="projectiles" type="Node" parent="."]
+
 [node name="cocoons" type="Node" parent="."]
 
 [node name="cocoon" parent="cocoons" instance=ExtResource("5_wlqdh")]
@@ -610,5 +612,3 @@ metadata/_edit_lock_ = true
 [node name="infected_spiders" type="Node" parent="."]
 
 [node name="infected_spider" parent="infected_spiders" instance=ExtResource("4_wplku")]
-
-[node name="projectiles" type="Node" parent="."]
