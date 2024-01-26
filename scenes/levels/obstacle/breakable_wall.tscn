@@ -1,72 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c085k8ncurt21"]
+[gd_scene load_steps=4 format=3 uid="uid://c085k8ncurt21"]
 
-[ext_resource type="Texture2D" uid="uid://wriwg4a4b2xt" path="res://assets/graphics/levels/silken_rock.png" id="1_ir20c"]
 [ext_resource type="Script" path="res://src/levels/obstacle/breakable_wall.gd" id="1_y1057"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmljv"]
-radius = 35.0
-height = 100.0
+[ext_resource type="Texture2D" uid="uid://bomi28fswq543" path="res://assets/graphics/levels/silken_tile_map.png" id="2_1t0j5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkmv2"]
-size = Vector2(100, 100)
+size = Vector2(400, 500)
 
 [node name="breakable_wall" type="StaticBody2D"]
 collision_layer = 10
 collision_mask = 31
 script = ExtResource("1_y1057")
 
-[node name="capsule_collider" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_fmljv")
-
-[node name="pieces" type="Node2D" parent="."]
-
-[node name="rock" type="Sprite2D" parent="pieces"]
-modulate = Color(0.160784, 0.278431, 0.572549, 1)
-position = Vector2(-8, 26)
-scale = Vector2(0.48, 0.48)
-texture = ExtResource("1_ir20c")
-
-[node name="rock2" type="Sprite2D" parent="pieces"]
-self_modulate = Color(0.137255, 0.635294, 0.756863, 1)
-position = Vector2(-24, 0)
-scale = Vector2(0.3, 0.26)
-texture = ExtResource("1_ir20c")
-
-[node name="rock3" type="Sprite2D" parent="pieces"]
-self_modulate = Color(0.137255, 0.635294, 0.756863, 1)
-position = Vector2(16, -8)
-scale = Vector2(0.42, 0.365)
-texture = ExtResource("1_ir20c")
-
-[node name="rock4" type="Sprite2D" parent="pieces"]
-modulate = Color(0.160784, 0.278431, 0.572549, 1)
-position = Vector2(-1, -9.75)
-scale = Vector2(0.34, 0.285)
-texture = ExtResource("1_ir20c")
-
-[node name="rock5" type="Sprite2D" parent="pieces"]
-self_modulate = Color(0.156863, 0.388235, 0.647059, 1)
-position = Vector2(-16, -24)
-scale = Vector2(0.355, 0.33)
-texture = ExtResource("1_ir20c")
-
-[node name="rock6" type="Sprite2D" parent="pieces"]
-self_modulate = Color(0.156863, 0.388235, 0.647059, 1)
-position = Vector2(16, 25)
-scale = Vector2(0.408, 0.5)
-texture = ExtResource("1_ir20c")
-
-[node name="rock7" type="Sprite2D" parent="pieces"]
-self_modulate = Color(0.137255, 0.635294, 0.756863, 1)
-position = Vector2(16, -32)
-scale = Vector2(0.355, 0.33)
-texture = ExtResource("1_ir20c")
-
-[node name="rock8" type="Sprite2D" parent="pieces"]
-self_modulate = Color(0.160784, 0.278431, 0.572549, 1)
-position = Vector2(-3.125, -38.25)
-scale = Vector2(0.2575, 0.245)
-texture = ExtResource("1_ir20c")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_1t0j5")
+hframes = 5
+vframes = 5
+frame = 20
 
 [node name="area_hit" type="Area2D" parent="."]
 metadata/_edit_lock_ = true
@@ -74,5 +24,8 @@ metadata/_edit_lock_ = true
 [node name="capsule_collider" type="CollisionShape2D" parent="area_hit"]
 shape = SubResource("RectangleShape2D_qkmv2")
 metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-176, -248, -128, -144, -96, -80, -88, -16, -128, 40, -112, 80, -168, 136, -160, 208, -184, 248, 184, 248, 176, 208, 120, 104, 112, 8, 144, -40, 112, -96, 136, -192, 176, -248)
 
 [connection signal="body_entered" from="area_hit" to="." method="_on_area_hit_body_entered"]

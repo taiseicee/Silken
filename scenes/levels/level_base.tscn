@@ -103,3 +103,7 @@ layer_2/tile_data = PackedInt32Array()
 [node name="parasites" type="Node" parent="."]
 
 [node name="infected_spiders" type="Node" parent="."]
+
+[node name="stalagtites" type="Node" parent="."]
+
+[node name="breakable_walls" type="Node" parent="."]

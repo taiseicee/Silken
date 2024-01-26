@@ -1,14 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5xr3f48rqnis"]
+[gd_scene load_steps=5 format=3 uid="uid://c5xr3f48rqnis"]
 
 [ext_resource type="Texture2D" uid="uid://pqw07yuronx" path="res://assets/graphics/levels/obstacles/silken_stalagtite.png" id="1_4cw11"]
+[ext_resource type="Script" path="res://src/levels/obstacle/stalagtite_fallable.gd" id="1_485id"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmqv"]
-size = Vector2(67, 284)
+size = Vector2(50, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq4lj"]
+size = Vector2(60, 220)
 
 [node name="stalagtite_fallable" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_485id")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="rectangle_collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cnmqv")
+metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="stalagtite" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_4cw11")
+
+[node name="player_check_left" type="RayCast2D" parent="."]
+position = Vector2(30, 0)
+target_position = Vector2(0, 750)
+
+[node name="player_check_right" type="RayCast2D" parent="."]
+position = Vector2(-30, 0)
+target_position = Vector2(0, 750)
+
+[node name="hit_box" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 9
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="rectangle_collider" type="CollisionShape2D" parent="hit_box"]
+shape = SubResource("RectangleShape2D_nq4lj")
+
+[connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]
