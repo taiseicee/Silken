@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5xr3f48rqnis"]
+
+[ext_resource type="Texture2D" uid="uid://pqw07yuronx" path="res://assets/graphics/levels/obstacles/silken_stalagtite.png" id="1_4cw11"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmqv"]
+size = Vector2(67, 284)
+
+[node name="stalagtite_fallable" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cnmqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4cw11")

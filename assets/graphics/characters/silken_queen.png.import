@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7bmx2uk2buap"
-path="res://.godot/imported/silken_guard.png-339d1054f414953d0e6cc0f51fd52ed4.ctex"
+uid="uid://bcojc5f73mdcc"
+path="res://.godot/imported/silken_queen.png-197cef626788209012f36ddade2cd0e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/levels/silken_guard.png"
-dest_files=["res://.godot/imported/silken_guard.png-339d1054f414953d0e6cc0f51fd52ed4.ctex"]
+source_file="res://assets/graphics/characters/silken_queen.png"
+dest_files=["res://.godot/imported/silken_queen.png-197cef626788209012f36ddade2cd0e9.ctex"]
 
 [params]
 
