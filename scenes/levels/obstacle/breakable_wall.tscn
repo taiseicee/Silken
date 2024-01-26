@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c085k8ncurt21"]
 
 [ext_resource type="Script" path="res://src/levels/obstacle/breakable_wall.gd" id="1_y1057"]
-[ext_resource type="Texture2D" uid="uid://bomi28fswq543" path="res://assets/graphics/levels/silken_tile_map.png" id="2_1t0j5"]
+[ext_resource type="Texture2D" uid="uid://pudpkvmvixv4" path="res://assets/graphics/levels/obstacles/silken_breakable_wall.png" id="2_lqpkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkmv2"]
 size = Vector2(400, 500)
@@ -11,12 +11,8 @@ collision_layer = 10
 collision_mask = 31
 script = ExtResource("1_y1057")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
-texture = ExtResource("2_1t0j5")
-hframes = 5
-vframes = 5
-frame = 20
+[node name="wall_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_lqpkj")
 
 [node name="area_hit" type="Area2D" parent="."]
 metadata/_edit_lock_ = true

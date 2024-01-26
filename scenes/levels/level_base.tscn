@@ -77,6 +77,21 @@ texture_region_size = Vector2i(100, 100)
 2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:4/0/physics_layer_0/angular_velocity = 0.0
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, 20, -20, 50, -50, 50)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -20, 50, -20, 50, 20, -50, 20)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -20, 50, -20, 50, 20, -50, 20)
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -20, -20, -40, 20, -20, 40, 20, 20, 50, -20, 50, -50, 20)
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_2wnii"]
 tile_size = Vector2i(100, 100)
@@ -107,3 +122,6 @@ layer_2/tile_data = PackedInt32Array()
 [node name="stalagtites" type="Node" parent="."]
 
 [node name="breakable_walls" type="Node" parent="."]
+
+[node name="thorns_hit_box" type="Area2D" parent="."]
+collision_layer = 8
