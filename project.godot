@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Silken"
-run/main_scene="res://scenes/levels/level_master.tscn"
+run/main_scene="res://scenes/levels/start_up.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 globals="*res://src/globals.gd"
+transition_layer="*res://scenes/transition_layer.tscn"
 
 [display]
 

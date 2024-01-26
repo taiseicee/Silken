@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://brrf272j8p6s"]
+
+[ext_resource type="Script" path="res://src/levels/start_up.gd" id="1_wwyon"]
+[ext_resource type="Texture2D" uid="uid://bfl6ng114v0u7" path="res://assets/graphics/levels/silken_startup.png" id="2_1ajmm"]
+
+[node name="start_up" type="Node2D"]
+script = ExtResource("1_wwyon")
+
+[node name="timer_transition" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ajmm")
+expand_mode = 3
+stretch_mode = 3
+
+[connection signal="timeout" from="timer_transition" to="." method="_on_timer_transition_timeout"]

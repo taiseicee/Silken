@@ -20,9 +20,7 @@ func _on_player_swing():
 func _on_player_dismiss_web():
 	web.disconnect_from_body()
 
-#func _on_player_spawn_web_attack(direction: Vector2):
-	#var web_projectile = web_projectile_scene.instantiate() as Area2D
-	#web_projectile.position = player.position
-	#web_projectile.rotation = direction.angle() + PI/2
-	#web_projectile.direction = direction
-	#projectiles.add_child(web_projectile)
+func _on_player_death():
+	transition_layer.end_scene()
+	player.reset()
+	transition_layer.start_scene()

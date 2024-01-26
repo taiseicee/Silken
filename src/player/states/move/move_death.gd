@@ -13,5 +13,7 @@ func enter_state():
 		player_head_dead.offset.x *= -1
 		player_head_dead.rotation *= -1
 		animation_player.play("move_death_right")
-		return
-	animation_player.play("move_death")
+	else:
+		animation_player.play("move_death")
+	await animation_player.animation_finished
+	character.death.emit()

@@ -16,6 +16,7 @@ class_name Player
 signal spawn_web_rope(web_direction: Vector2, web_length: float)
 signal swing
 signal dismiss_web
+signal death
 
 func _ready():
 	move_machine.init(self, move_comp, action_comp, animation_player_body)
@@ -42,3 +43,7 @@ func collect_cocoon():
 
 func take_damage(damage: int):
 	globals.add_player_health(-damage)
+
+func reset():
+	globals.add_player_health(100)
+	move_machine.force_change_state("move_idle")
