@@ -3,7 +3,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $animation_player
 @onready var key_manager: Node = $key_manager
 
-@export_enum("Swing", "Dash") var tutorial_type: int = 0
+@export_enum("None", "Swing", "Dash") var tutorial_type: int = 0
 
 var stage: int = 0
 
@@ -12,14 +12,20 @@ var first_key
 var second_key
 
 func _ready():
+	init_tutorial()
+
+func init_tutorial():
+	visible = true
 	match tutorial_type:
-		0: animation_player.play("press_a")
-		1: animation_player.play("press_space")
+		0: pass
+		1: animation_player.play("press_a")
+		2: animation_player.play("press_space")
 
 func _unhandled_input(event: InputEvent):
 	match tutorial_type:
-		0: progress_swing_tutorial(event)
-		1: progress_dash_tutorial(event)
+		0: pass
+		1: progress_swing_tutorial(event)
+		2: progress_dash_tutorial(event)
 
 func progress_swing_tutorial(event: InputEvent):
 	var key_event := event as InputEventKey
@@ -82,4 +88,8 @@ func progress_dash_tutorial(event: InputEvent):
 	kill_tutorial()
 
 func kill_tutorial():
-	queue_free()
+	visible = false
+	first_key = null
+	second_key = null
+	stage = 0
+	animation_player.clear_queue()

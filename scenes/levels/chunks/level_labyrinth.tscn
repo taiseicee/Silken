@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://ukqemaylgkc1"]
+
+[ext_resource type="PackedScene" uid="uid://bajdafg701uf6" path="res://scenes/levels/level_base.tscn" id="1_e175r"]
+[ext_resource type="PackedScene" uid="uid://dxai78xtjfa86" path="res://scenes/enemies/parasite.tscn" id="2_rns8k"]
+[ext_resource type="PackedScene" uid="uid://c085k8ncurt21" path="res://scenes/levels/obstacle/breakable_wall.tscn" id="2_td2wk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cbp5"]
+size = Vector2(500, 400)
+
+[node name="level_labyrinth" instance=ExtResource("1_e175r")]
+
+[node name="tile_map" parent="." index="0"]
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(720897, 131072, 2, 720898, 131072, 2, 720899, 131072, 2, 720900, 131072, 2, 720901, 131072, 2, 262144, 131072, 2, 327680, 131072, 2, 393216, 131072, 2, 458752, 131072, 2, 524288, 131072, 2, 589824, 131072, 2, 655360, 131072, 2, 655361, 131072, 2, 720902, 131072, 2, 720903, 131072, 2, 655368, 131072, 2, 655369, 131072, 2, 655370, 131072, 2, 655371, 131072, 2, 524300, 131072, 2, 589836, 131072, 2, 524301, 131072, 2, 589837, 131072, 2, 589838, 131072, 2, 589839, 131072, 2, 589840, 131072, 2, 589841, 131072, 2, 589842, 131072, 2, 589843, 131072, 2, 589844, 131072, 2, 589845, 131072, 2, 589846, 131072, 2, 589847, 131072, 2, 589848, 131072, 2, 589849, 131072, 2, 589850, 131072, 2, 589851, 131072, 2, 589852, 131072, 2, 589853, 131072, 2, 524318, 131072, 2, 524319, 131072, 2, 589835, 131072, 2, 524317, 65536, 1, 524299, 65536, 1, 655367, 65536, 1, 655366, 262144, 1342177283, 524302, 131072, 2, 524303, 196608, 1, 524304, 262144, 805306371, 196608, 131072, 2, 131073, 131072, 2, 196609, 131072, 2, 131074, 131072, 2, 196610, 131072, 2, 131075, 131072, 2, 131076, 131072, 2, 131077, 131072, 2, 131078, 131072, 2, 131079, 131072, 2, 196615, 131072, 2, 131080, 131072, 2, 196616, 131072, 2, 131081, 131072, 2, 196617, 131072, 2, 131082, 131072, 2, 196618, 131072, 2, 131083, 131072, 2, 196619, 131072, 2, 131084, 131072, 2, 196620, 131072, 2, 131085, 131072, 2, 196621, 131072, 2, 131086, 131072, 2, 196622, 131072, 2, 131087, 131072, 2, 196623, 131072, 2, 131088, 131072, 2, 196624, 131072, 2, 131089, 131072, 2, 196625, 131072, 2, 131090, 131072, 2, 131091, 131072, 2, 131092, 131072, 2, 131093, 131072, 2, 131094, 131072, 2, 131095, 131072, 2, 131096, 131072, 2, 131097, 131072, 2, 131098, 131072, 2, 131099, 131072, 2, 131100, 131072, 2, 131101, 131072, 2, 131102, 131072, 2, 131103, 131072, 2, 131104, 131072, 2, 131105, 131072, 2, 131106, 131072, 2, 131107, 131072, 2, 131108, 131072, 2, 131109, 131072, 2, 131110, 131072, 2, 131111, 131072, 2, 131112, 131072, 2, 131113, 131072, 2, 131114, 131072, 2, 131115, 131072, 2, 131116, 131072, 2, 524309, 65536, 1, 524310, 131072, 2, 524311, 196608, 1, 262161, 65536, 3, 262162, 131072, 2, 262163, 196608, 3, 196626, 131072, 2, 196627, 131072, 2, 196628, 131072, 2, 196629, 131072, 2, 196630, 131072, 2, 196631, 131072, 2, 196632, 131072, 2, 196633, 131072, 2, 196634, 131072, 2, 196635, 131072, 2, 196636, 131072, 2, 196637, 131072, 2, 196638, 131072, 2, 196639, 131072, 2, 196640, 131072, 2, 196641, 131072, 2, 196642, 131072, 2, 262170, 131072, 2, 262171, 196608, 3, 262169, 65536, 3, 524320, 131072, 2, 524321, 131072, 2, 524322, 131072, 2, 524323, 131072, 2, 524324, 131072, 2, 524325, 131072, 2, 524326, 131072, 2, 524327, 131072, 2, 524328, 131072, 2, 524329, 131072, 2, 524330, 131072, 2, 524331, 131072, 2, 524332, 131072, 2, 524333, 131072, 2, 524334, 131072, 2, 196643, 131072, 2, 196644, 131072, 2, 196645, 131072, 2, 196646, 131072, 2, 196647, 131072, 2, 196648, 131072, 2, 196649, 131072, 2, 196650, 131072, 2, 196651, 131072, 2, 196652, 131072, 2, 196653, 131072, 2, 196654, 131072, 2, 196655, 131072, 2, 196656, 131072, 2, 196657, 131072, 2, 196658, 131072, 2, 196659, 131072, 2, 196660, 131072, 2, 196661, 131072, 2, 196662, 131072, 2, 196663, 131072, 2, 196664, 131072, 2, 196665, 131072, 2, 524335, 131072, 2, 524336, 131072, 2, 524337, 131072, 2, 524338, 131072, 2, 524339, 131072, 2, 524340, 131072, 2, 524341, 131072, 2, 524342, 131072, 2, 524343, 131072, 2, 524344, 131072, 2, 524345, 131072, 2)
+
+[node name="parasite" parent="parasites" index="0" instance=ExtResource("2_rns8k")]
+position = Vector2(4851, 745)
+
+[node name="breakable_wall_1" type="Node2D" parent="." index="5"]
+position = Vector2(3900, 700)
+
+[node name="breakable_wall" parent="breakable_wall_1" index="0" instance=ExtResource("2_td2wk")]
+position = Vector2(50, 50)
+
+[node name="breakable_wall2" parent="breakable_wall_1" index="1" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -50)
+
+[node name="breakable_wall3" parent="breakable_wall_1" index="2" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -150)
+
+[node name="breakable_wall4" parent="breakable_wall_1" index="3" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -250)
+
+[node name="breakable_wall_2" type="Node2D" parent="." index="6"]
+position = Vector2(4500, 700)
+
+[node name="breakable_wall" parent="breakable_wall_2" index="0" instance=ExtResource("2_td2wk")]
+position = Vector2(50, 50)
+
+[node name="breakable_wall2" parent="breakable_wall_2" index="1" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -50)
+
+[node name="breakable_wall3" parent="breakable_wall_2" index="2" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -150)
+
+[node name="breakable_wall4" parent="breakable_wall_2" index="3" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -250)
+
+[node name="breakable_wall_3" type="Node2D" parent="." index="7"]
+position = Vector2(5100, 700)
+
+[node name="breakable_wall" parent="breakable_wall_3" index="0" instance=ExtResource("2_td2wk")]
+position = Vector2(50, 50)
+
+[node name="breakable_wall2" parent="breakable_wall_3" index="1" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -50)
+
+[node name="breakable_wall3" parent="breakable_wall_3" index="2" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -150)
+
+[node name="breakable_wall4" parent="breakable_wall_3" index="3" instance=ExtResource("2_td2wk")]
+position = Vector2(50, -250)
+
+[node name="Area2D" type="Area2D" parent="." index="8"]
+position = Vector2(3650, 600)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_8cbp5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

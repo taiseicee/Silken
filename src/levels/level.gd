@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player: RigidBody2D = $player
+@onready var popup_tutorial: Node2D = $player/popup_tutorial
 @onready var projectiles: Node = $projectiles
 @onready var web: Web = $web
 @onready var ui: CanvasLayer = $user_interface
@@ -24,3 +25,7 @@ func _on_player_death():
 	transition_layer.end_scene()
 	player.reset()
 	transition_layer.start_scene()
+
+func _on_level_labyrinth_give_player_dash_tutorial():
+	popup_tutorial.tutorial_type = 2
+	popup_tutorial.init_tutorial()

@@ -5,6 +5,8 @@ extends Node2D
 
 var web_projectile_scene: PackedScene = preload("res://scenes/projectiles/web_projectile.tscn")
 
+signal give_player_dash_tutorial
+
 func _ready():
 	for infected_spider in infected_spiders.get_children():
 		infected_spider.connect('web_projectile', _on_web_projectile)
@@ -15,3 +17,8 @@ func _on_web_projectile(position: Vector2, direction: Vector2, damage: int):
 	web_projectile.rotation = direction.angle() + PI/2
 	web_projectile.direction = direction
 	projectiles.add_child(web_projectile)
+
+
+func _on_area_2d_body_entered(body):
+	if body is Player:
+		give_player_dash_tutorial.emit()
