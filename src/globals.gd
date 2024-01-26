@@ -4,6 +4,7 @@ var ui: CanvasLayer
 
 var cocoon_count: int = 0
 var player_health: int = 100
+var is_in_cutscene: bool = false
 
 func add_cocoon():
 	cocoon_count += 1

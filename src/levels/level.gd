@@ -9,6 +9,7 @@ extends Node2D
 var web_projectile_scene: PackedScene = preload("res://scenes/projectiles/web_projectile.tscn")
 
 func _ready():
+	$level_labyrinth.camera = $player/camera
 	globals.ui = ui
 
 func _on_player_spawn_web_rope(web_direction, web_length):

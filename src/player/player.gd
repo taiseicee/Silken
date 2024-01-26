@@ -23,6 +23,7 @@ func _ready():
 	web_machine.init(self, move_comp, action_comp, animation_player_head)
 
 func _process(delta: float):
+	if globals.is_in_cutscene: return
 	if globals.player_health <= 0 && not move_machine.is_in_state("move_death"):
 		move_machine.force_change_state("move_death")
 	if globals.player_health <= 0 && not web_machine.is_in_state("web_idle"):
@@ -31,10 +32,12 @@ func _process(delta: float):
 	web_machine.process_frame(delta)
 
 func _unhandled_input(event: InputEvent):
+	if globals.is_in_cutscene: return
 	move_machine.process_input(event)
 	web_machine.process_input(event)
 
 func _physics_process(delta: float):
+	if globals.is_in_cutscene: return
 	move_machine.process_physics(delta)
 	web_machine.process_physics(delta)
 

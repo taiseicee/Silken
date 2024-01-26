@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bajdafg701uf6"]
+[gd_scene load_steps=6 format=3 uid="uid://bajdafg701uf6"]
 
 [ext_resource type="Script" path="res://src/levels/level_chunk.gd" id="1_3rqmg"]
 [ext_resource type="Texture2D" uid="uid://bomi28fswq543" path="res://assets/graphics/levels/silken_tile_map.png" id="2_limak"]
+[ext_resource type="PackedScene" uid="uid://bpojhcwjmd627" path="res://scenes/levels/narrative/text_box.tscn" id="3_1txxj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yuo35"]
 texture = ExtResource("2_limak")
@@ -92,6 +93,9 @@ texture_region_size = Vector2i(100, 100)
 1:4/0 = 0
 1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:4/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_2wnii"]
 tile_size = Vector2i(100, 100)
@@ -122,6 +126,9 @@ layer_2/tile_data = PackedInt32Array()
 [node name="stalagtites" type="Node" parent="."]
 
 [node name="breakable_walls" type="Node" parent="."]
+
+[node name="text_box" parent="." instance=ExtResource("3_1txxj")]
+visible = false
 
 [node name="thorns_hit_box" type="Area2D" parent="."]
 collision_layer = 8

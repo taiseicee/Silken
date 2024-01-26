@@ -39,7 +39,7 @@ texture = ExtResource("5_f165i")
 texture_scale = 1.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0196078, 0.00784314, 0.109804, 1)
+color = Color(0.01976, 0.0052, 0.13, 1)
 
 [node name="world_environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hhtk3")
@@ -67,7 +67,6 @@ centered = false
 [node name="user_interface" parent="." instance=ExtResource("8_sicgb")]
 
 [node name="level_labyrinth" parent="." instance=ExtResource("9_ux1pb")]
-thorn_damage = 10
 
 [connection signal="death" from="player" to="." method="_on_player_death"]
 [connection signal="dismiss_web" from="player" to="." method="_on_player_dismiss_web"]
