@@ -18,3 +18,8 @@ func add_player_health(value: int):
 	print("Player Health: - %d" % [globals.player_health])
 	if ui && "update_health" in ui:
 		ui.update_health()
+
+func reset():
+	cocoon_count = 0
+	player_health = 100
+	is_in_cutscene = false

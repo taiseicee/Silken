@@ -25,6 +25,7 @@ func _on_player_dismiss_web():
 
 func _on_player_death():
 	transition_layer.end_scene()
+	globals.reset()
 	player.reset()
 	transition_layer.start_scene()
 
