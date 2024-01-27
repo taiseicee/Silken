@@ -6,6 +6,7 @@ signal give_player_dash_tutorial
 
 @onready var text_box: CanvasLayer = $text_box
 
+var player: PhysicsBody2D
 var camera: Camera2D
 var dialogue_stage = 0
 var epilogue_scene: PackedScene = preload("res://scenes/levels/epilogue.tscn")
@@ -17,7 +18,7 @@ func _process(delta):
 		match dialogue_stage:
 			1: text_box.set_text("Queen Aria's cocoons have been stolen by parasitic beasts. Please kill them and take what is rightfully hers back to the nest.")
 			2: text_box.set_text("I must stand guard for now. Hurry. I hate to see Queen Aria's cocoons being abused in such manner.")
-			3: exit_narrative_1()
+			3: exit_narrative()
 			4: narrative_1_branch_1()
 			5: text_box.set_text("While you are but a new born, I ask of you to please help your Silk-kin.")
 			6: exit_narrative_2()
@@ -35,11 +36,11 @@ func _on_narrative_1_body_entered(body):
 	$narrative_1_hit_box.queue_free()
 	globals.is_in_cutscene = true
 	text_box.visible = true
-	camera.position.x -= 1000
+	camera.global_position = $royal_guard.global_position
 	text_box.set_text("Ahhh. I guess I did feel a Silken's presence nearby. Tell me are the others around?")
 
-func exit_narrative_1():
-	camera.position.x += 1000
+func exit_narrative():
+	camera.global_position = player.global_position
 	text_box.visible = false
 	globals.is_in_cutscene = false
 
@@ -48,7 +49,7 @@ func _on_narrative_2_hit_box_body_entered(body):
 	$narrative_2_hit_box.queue_free()
 	globals.is_in_cutscene = true
 	text_box.visible = true
-	camera.position.x += 500
+	camera.global_position = $queen.global_position
 	text_box.set_text("Oh? You're Silk Given arn't you? Your presence is reassuing.")
 	pass # Replace with function body.
 
@@ -68,7 +69,5 @@ func narrative_1_branch_1():
 	text_box.set_text(text)
 
 func exit_narrative_2():
-	camera.position.x -= 500
-	text_box.visible = false
-	globals.is_in_cutscene = false
+	exit_narrative()
 	transition_layer.change_scene(epilogue_scene)

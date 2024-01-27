@@ -11,6 +11,7 @@ var web_projectile_scene: PackedScene = preload("res://scenes/projectiles/web_pr
 
 func _ready():
 	$level_labyrinth.camera = $player/camera
+	$level_labyrinth.player = player
 	globals.ui = ui
 		
 func _on_player_spawn_web_rope(web_direction, web_length):
