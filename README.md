@@ -13,3 +13,13 @@ https://docs.google.com/document/d/1NPdJDyzTq2wuHtM9xqOVgMNQZkE6kyhc0zb0j2o-EWU/
 ### Godot State Manager
 - https://youtu.be/oqFbZoA2lnU?si=OX0vMmOV1gSqKQcO
 - https://youtu.be/i0Y6anqiJ-g?si=IdOiITNUVV0XzFYM
+
+## Credits
+### Game Director
+- taiseicee
+### Character Designer
+- yeunlee
+### Background Designer
+- auradeer
+### Music Writer
+- pastvenus
