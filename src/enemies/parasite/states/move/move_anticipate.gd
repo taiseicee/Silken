@@ -7,6 +7,7 @@ func enter_state():
 	super()
 	#print("Move Machine > Anticipate State")
 	timer_release.start()
+	animation_player.queue("anticipate")
 
 func process_physics(delta: float):
 	super(delta)

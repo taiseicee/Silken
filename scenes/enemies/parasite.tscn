@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxai78xtjfa86"]
+[gd_scene load_steps=18 format=3 uid="uid://dxai78xtjfa86"]
 
 [ext_resource type="Script" path="res://src/enemies/parasite/parasite.gd" id="1_fexof"]
 [ext_resource type="Script" path="res://src/finite_state_machine.gd" id="2_17aj4"]
@@ -18,6 +18,60 @@ radius = 31.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_35wfw"]
 radius = 415.0
 
+[sub_resource type="Animation" id="Animation_bwinv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6jeac"]
+resource_name = "anticipate"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g65f4"]
+resource_name = "attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.601021, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 3), Vector2i(2, 3), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s33ve"]
+_data = {
+"RESET": SubResource("Animation_bwinv"),
+"anticipate": SubResource("Animation_6jeac"),
+"attack": SubResource("Animation_g65f4")
+}
+
 [node name="parasite" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 8
@@ -32,7 +86,6 @@ texture = ExtResource("2_amdcb")
 offset = Vector2(-140, -130)
 hframes = 4
 vframes = 4
-frame = 4
 
 [node name="move_comp" type="Node2D" parent="."]
 script = ExtResource("3_dfwlk")
@@ -85,7 +138,7 @@ wait_time = 2.5
 one_shot = true
 
 [node name="timer_attack" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 0.8
 one_shot = true
 
 [node name="vision" type="Area2D" parent="."]
@@ -97,12 +150,18 @@ shape = SubResource("CircleShape2D_35wfw")
 [node name="health_bar" type="ProgressBar" parent="."]
 modulate = Color(0.839216, 0.337255, 0.329412, 1)
 offset_left = -32.0
-offset_top = -48.0
+offset_top = 40.0
 offset_right = 32.0
-offset_bottom = -40.0
+offset_bottom = 48.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s33ve")
+}
 
 [connection signal="timeout" from="timer_release" to="move_machine/move_anticipate" method="_on_timer_timeout"]
 [connection signal="timeout" from="timer_attack" to="move_comp" method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="timer_attack" to="attack_machine/attack_attack" method="_on_timer_attack_timeout"]
 [connection signal="body_entered" from="vision" to="move_comp" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="vision" to="move_comp" method="_on_vision_body_exited"]

@@ -6,6 +6,7 @@ extends Node2D
 @onready var ray_cast_left: RayCast2D = $ray_cast_left
 @onready var ray_cast_right: RayCast2D = $ray_cast_right
 @onready var ray_cast_vision: RayCast2D = $ray_cast_vision
+@onready var sprite: Sprite2D = $"../sprite"
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -48,6 +49,7 @@ func init_pursuit():
 
 func change_direction():
 	direction *= -1
+	sprite.flip_h = direction > 0
 	slide_start_position = character.position
 
 func slide_patrol():

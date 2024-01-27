@@ -163,3 +163,7 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_vtx1e")
 }
+
+[node name="health_bar" parent="." index="10"]
+offset_top = 36.0
+offset_bottom = 44.0

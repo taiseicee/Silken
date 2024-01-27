@@ -12,8 +12,8 @@ func _ready():
 	health_bar.value = health_max
 	health_bar.max_value = health_max
 	move_comp.init()
-	attack_machine.init(self, move_comp)
-	move_machine.init(self, move_comp)
+	attack_machine.init(self, move_comp, null, $AnimationPlayer)
+	move_machine.init(self, move_comp, null, $AnimationPlayer)
 
 func _process(delta: float):
 	move_machine.process_frame(delta)
