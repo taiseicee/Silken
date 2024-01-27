@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxai78xtjfa86" path="res://scenes/enemies/parasite.tscn" id="2_rns8k"]
 [ext_resource type="PackedScene" uid="uid://c085k8ncurt21" path="res://scenes/levels/obstacle/breakable_wall.tscn" id="2_td2wk"]
 [ext_resource type="PackedScene" uid="uid://i1rc41yslxsn" path="res://scenes/enemies/infected_spider.tscn" id="4_osi8u"]
-[ext_resource type="PackedScene" uid="uid://c5xr3f48rqnis" path="res://scenes/levels/obstacle/stalagtite_fallable.tscn" id="6_4e10b"]
+[ext_resource type="PackedScene" uid="uid://c5xr3f48rqnis" path="res://scenes/levels/obstacle/stalactite_fallable.tscn" id="5_t352l"]
 [ext_resource type="Texture2D" uid="uid://b7bmx2uk2buap" path="res://assets/graphics/characters/silken_guard.png" id="7_oiduu"]
 [ext_resource type="Texture2D" uid="uid://con2f1g45cm41" path="res://assets/graphics/levels/silken_background.jpg" id="8_4fcim"]
 [ext_resource type="Texture2D" uid="uid://btgp7r4bp5bnn" path="res://assets/graphics/lights/silken_point_light.png" id="8_t86jg"]
@@ -61,13 +61,13 @@ position = Vector2(-1114, 4140)
 [node name="infected_spider3" parent="infected_spiders" index="2" instance=ExtResource("4_osi8u")]
 position = Vector2(-1598, 4660)
 
-[node name="stalagtite_fallable" parent="stalagtites" index="0" instance=ExtResource("6_4e10b")]
+[node name="stalagtite_fallable" parent="stalagtites" index="0" instance=ExtResource("5_t352l")]
 position = Vector2(4950, 1800)
 
-[node name="stalagtite_fallable2" parent="stalagtites" index="1" instance=ExtResource("6_4e10b")]
+[node name="stalagtite_fallable2" parent="stalagtites" index="1" instance=ExtResource("5_t352l")]
 position = Vector2(4050, 1800)
 
-[node name="stalagtite_fallable3" parent="stalagtites" index="2" instance=ExtResource("6_4e10b")]
+[node name="stalagtite_fallable3" parent="stalagtites" index="2" instance=ExtResource("5_t352l")]
 position = Vector2(3150, 1800)
 
 [node name="breakable_wall" parent="breakable_walls" index="0" instance=ExtResource("2_td2wk")]

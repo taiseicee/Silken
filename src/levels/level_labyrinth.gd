@@ -11,6 +11,7 @@ var camera: Camera2D
 var dialogue_stage = 0
 var epilogue_scene: PackedScene = preload("res://scenes/levels/epilogue.tscn")
 
+# No one should evercode like this :(
 func _process(delta):
 	if not globals.is_in_cutscene: return
 	if Input.is_action_just_pressed("interact"):
@@ -50,7 +51,7 @@ func _on_narrative_2_hit_box_body_entered(body):
 	globals.is_in_cutscene = true
 	text_box.visible = true
 	camera.global_position = $queen.global_position
-	text_box.set_text("Oh? You're Silk Given arn't you? Your presence is reassuing.")
+	text_box.set_text("Oh? You're Silk Given aren't you? Your presence is reassuing.")
 	pass # Replace with function body.
 
 func narrative_1_branch_1():

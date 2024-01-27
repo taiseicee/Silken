@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5xr3f48rqnis"]
 
-[ext_resource type="Texture2D" uid="uid://pqw07yuronx" path="res://assets/graphics/levels/obstacles/silken_stalagtite.png" id="1_4cw11"]
-[ext_resource type="Script" path="res://src/levels/obstacle/stalagtite_fallable.gd" id="1_485id"]
+[ext_resource type="Texture2D" uid="uid://pqw07yuronx" path="res://assets/graphics/levels/obstacles/silken_stalactite.png" id="1_4cw11"]
+[ext_resource type="Script" path="res://src/levels/obstacle/stalactite_fallable.gd" id="1_485id"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmqv"]
 size = Vector2(50, 150)
