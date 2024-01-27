@@ -17,9 +17,11 @@ https://docs.google.com/document/d/1NPdJDyzTq2wuHtM9xqOVgMNQZkE6kyhc0zb0j2o-EWU/
 ## Credits
 ### Game Director
 - taiseicee
-### Character Designer
-- yeunlee
 ### Background Designer
 - auradeer
+### Character Designer
+- yeunlee
 ### Music Writer
 - pastvenus
+### Programmer
+- taiseicee
