@@ -8,6 +8,8 @@ class_name Parasite
 
 @export var health_max: int = 100
 
+signal dead(position)
+
 func _ready():
 	health_bar.value = health_max
 	health_bar.max_value = health_max
@@ -29,6 +31,6 @@ func _physics_process(delta: float):
 
 func take_damage(damage_value: int):
 	health_bar.value -= damage_value
-	if health_bar.value <= 0:
-		#TODO: Force State
-		queue_free()
+	if health_bar.value > 0: return
+	dead.emit(global_position)
+	queue_free()

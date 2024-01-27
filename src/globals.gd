@@ -13,6 +13,7 @@ func add_cocoon():
 		ui.update_cocoon_count()
 
 func add_player_health(value: int):
+	if is_in_cutscene: return
 	player_health += value
 	print("Player Health: - %d" % [globals.player_health])
 	if ui && "update_health" in ui:

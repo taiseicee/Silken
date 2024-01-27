@@ -23,7 +23,9 @@ func _ready():
 	web_machine.init(self, move_comp, action_comp, animation_player_head)
 
 func _process(delta: float):
-	if globals.is_in_cutscene: return
+	if globals.is_in_cutscene: 
+		dismiss_web.emit()
+		return
 	if globals.player_health <= 0 && not move_machine.is_in_state("move_death"):
 		move_machine.force_change_state("move_death")
 	if globals.player_health <= 0 && not web_machine.is_in_state("web_idle"):

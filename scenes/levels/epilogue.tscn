@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ty86ripktfvd"]
+
+[ext_resource type="Texture2D" uid="uid://ev42lb2jt0ci" path="res://assets/graphics/levels/epilogue.png" id="1_c3pj8"]
+[ext_resource type="Script" path="res://src/levels/epilogue.gd" id="1_rpcsq"]
+
+[node name="epilogue" type="Node2D"]
+script = ExtResource("1_rpcsq")
+
+[node name="timer_transition" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_c3pj8")
+expand_mode = 3
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="timer_transition" to="." method="_on_timer_transition_timeout"]

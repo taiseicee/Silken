@@ -21,5 +21,6 @@ grow_vertical = 2
 texture = ExtResource("2_1ajmm")
 expand_mode = 3
 stretch_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="timer_transition" to="." method="_on_timer_transition_timeout"]

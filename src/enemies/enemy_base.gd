@@ -14,6 +14,9 @@ extends CharacterBody2D
 @export var direction: int = -1
 
 var player
+var is_dead = false
+
+signal dead(position)
 
 func _ready():
 	health_bar.value = health_max
@@ -22,23 +25,25 @@ func _ready():
 	attack_machine.init(self, move_comp, attack_comp, null)
 
 func _process(delta: float):
+	if is_dead: return
 	move_machine.process_frame(delta)
 	attack_machine.process_frame(delta)
 
 func _unhandled_input(event: InputEvent):
+	if is_dead: return
 	move_machine.process_input(event)
 	attack_machine.process_input(event)
 
 func _physics_process(delta: float):
+	if is_dead: return
 	move_machine.process_physics(delta)
 	attack_machine.process_physics(delta)
 
 func take_damage(damage_value: int):
 	health_bar.value -= damage_value
 	if health_bar.value > 0: return
-	move_machine.force_change_state("move_death")
-	attack_machine.force_change_state("attack_idle")
-	queue_free()
+	dead.emit(global_position)
+	is_dead = true
 
 func _on_vision_body_entered(body):
 	if body is Player:
