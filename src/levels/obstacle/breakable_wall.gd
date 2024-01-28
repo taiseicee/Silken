@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @export var min_speed_to_budge: float = 300
 
-func take_damage(damage: int):
+func take_damage(_damage: int):
 	queue_free()
 
 func _on_area_hit_body_entered(body):

@@ -12,7 +12,7 @@ var dialogue_stage = 0
 var epilogue_scene: PackedScene = preload("res://scenes/levels/epilogue.tscn")
 
 # No one should evercode like this :(
-func _process(delta):
+func _process(_delta):
 	if not globals.is_in_cutscene: return
 	if Input.is_action_just_pressed("interact"):
 		dialogue_stage += 1

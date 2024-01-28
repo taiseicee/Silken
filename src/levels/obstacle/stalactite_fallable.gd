@@ -6,7 +6,7 @@ extends RigidBody2D
 var is_falling = false
 var damage: int = 20
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not player_check_left.is_colliding() and not player_check_right.is_colliding() : return
 	if player_check_left.get_collider() is Player or player_check_right.get_collider() is Player:
 		gravity_scale = 1
