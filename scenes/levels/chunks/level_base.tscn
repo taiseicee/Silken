@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/levels/level_chunk.gd" id="1_3rqmg"]
 [ext_resource type="Texture2D" uid="uid://bomi28fswq543" path="res://assets/graphics/levels/silken_tile_map.png" id="2_limak"]
-[ext_resource type="PackedScene" uid="uid://bpojhcwjmd627" path="res://scenes/levels/narrative/text_box.tscn" id="3_1txxj"]
+[ext_resource type="PackedScene" uid="uid://bpojhcwjmd627" path="res://scenes/user_interface/text_box.tscn" id="3_1txxj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yuo35"]
 texture = ExtResource("2_limak")
