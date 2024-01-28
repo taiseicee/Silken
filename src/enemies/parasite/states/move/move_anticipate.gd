@@ -1,6 +1,6 @@
 extends State
 
-@onready var timer_release: Timer = $"../../timer_release"
+@onready var timer_release: Timer = $"../../move_comp/timer_release"
 var will_release: bool = false
 
 func enter_state():
@@ -15,11 +15,10 @@ func process_physics(delta: float):
 		state_transition.emit(self, "move_idle")
 		return
 	
-	if not will_release:
-		return
+	if not will_release: return
 	timer_release.start()
 	will_release = false
 	state_transition.emit(self, "move_release")
 
-func _on_timer_timeout():
+func _on_timer_release_timeout():
 	will_release = true

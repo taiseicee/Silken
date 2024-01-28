@@ -1,36 +1,25 @@
-extends CharacterBody2D
-class_name Parasite
+extends "res://src/enemies/enemy_base.gd"
 
-@onready var move_machine: FiniteStateMachine = $move_machine
-@onready var attack_machine: FiniteStateMachine = $attack_machine
-@onready var move_comp: Node = $move_comp
-@onready var health_bar: ProgressBar = $health_bar
+@onready var animation_player: AnimationPlayer = $animation_player
 
-@export var health_max: int = 100
+@export var speed_slide_patrol: float = 200
+@export var time_anticipate_patrol: float = 2.5
 
-signal dead(position)
+@export var speed_slide_pursue: float = 500
+@export var time_anticipate_pursue: float = 1
+
+@export var preferred_slide_distance: float = 200
 
 func _ready():
 	health_bar.value = health_max
 	health_bar.max_value = health_max
-	move_comp.init()
-	attack_machine.init(self, move_comp, null, $AnimationPlayer)
-	move_machine.init(self, move_comp, null, $AnimationPlayer)
-
-func _process(delta: float):
-	move_machine.process_frame(delta)
-	attack_machine.process_frame(delta)
-
-func _unhandled_input(event: InputEvent):
-	move_machine.process_input(event)
-	attack_machine.process_input(event)
-
-func _physics_process(delta: float):
-	move_machine.process_physics(delta)
-	attack_machine.process_physics(delta)
+	move_machine.init(self, move_comp, attack_comp, animation_player)
+	attack_machine.init(self, move_comp, attack_comp, animation_player)
 
 func take_damage(damage_value: int):
-	health_bar.value -= damage_value
+	super(damage_value)
 	if health_bar.value > 0: return
-	dead.emit(global_position)
+	# TODO: Play Death Animation
+	#animation_body.play("death")
+	#await animation_body.animation_finished
 	queue_free()

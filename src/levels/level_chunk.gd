@@ -26,6 +26,6 @@ func _on_web_projectile(position: Vector2, direction: Vector2, damage: int):
 func _on_enemy_death(position: Vector2):
 	var cocoon := cocoon_scene.instantiate() as RigidBody2D
 	var buffer: Vector2 = Vector2.UP * 10
+	cocoons.add_child(cocoon)
 	cocoon.global_position = position + buffer
 	cocoon.apply_central_impulse(Vector2.UP * 100)
-	cocoons.add_child(cocoon)

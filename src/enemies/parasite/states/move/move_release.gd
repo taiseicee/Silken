@@ -17,5 +17,5 @@ func process_physics(delta: float):
 	
 	if character.attack_machine.is_in_state("attack_patrol"):
 		move_comp.slide_patrol()
-	elif character.attack_machine.is_in_state("attack_pursuit"):
+	elif character.attack_machine.is_in_state("attack_alert"):
 		move_comp.slide_pursuit()

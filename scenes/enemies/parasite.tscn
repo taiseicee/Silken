@@ -1,22 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxai78xtjfa86"]
+[gd_scene load_steps=15 format=3 uid="uid://rtydc0vissbd"]
 
 [ext_resource type="Script" path="res://src/enemies/parasite/parasite.gd" id="1_fexof"]
-[ext_resource type="Script" path="res://src/finite_state_machine.gd" id="2_17aj4"]
+[ext_resource type="PackedScene" uid="uid://dhuvd3tu2enxw" path="res://scenes/enemies/enemy_base.tscn" id="1_um2y1"]
 [ext_resource type="Texture2D" uid="uid://cvpeigdvun8gr" path="res://assets/graphics/enemies/silken_spritesheet_parasite.png" id="2_amdcb"]
 [ext_resource type="Script" path="res://src/enemies/parasite/move_comp.gd" id="3_dfwlk"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_anticipate.gd" id="5_wcfpq"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_idle.gd" id="6_btqq8"]
-[ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_fall.gd" id="6_c7qeu"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/move/move_release.gd" id="7_uv2cc"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_patrol.gd" id="8_1ebfo"]
-[ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_pursuit.gd" id="9_eyrd4"]
+[ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_alert.gd" id="8_7vlkp"]
 [ext_resource type="Script" path="res://src/enemies/parasite/states/attack/attack_attack.gd" id="10_gijgc"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_o6cy5"]
-radius = 31.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_35wfw"]
-radius = 415.0
 
 [sub_resource type="Animation" id="Animation_bwinv"]
 length = 0.001
@@ -72,96 +65,52 @@ _data = {
 "attack": SubResource("Animation_g65f4")
 }
 
-[node name="parasite" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 8
+[node name="parasite" instance=ExtResource("1_um2y1")]
 script = ExtResource("1_fexof")
+speed_slide_patrol = 200.0
+time_anticipate_patrol = 2.5
+speed_slide_pursue = 500.0
+time_anticipate_pursue = 1.0
+preferred_slide_distance = 200.0
 
-[node name="capsule_collider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_o6cy5")
-
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="." index="1"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_amdcb")
 offset = Vector2(-140, -130)
 hframes = 4
 vframes = 4
 
-[node name="move_comp" type="Node2D" parent="."]
+[node name="move_comp" parent="." index="2"]
 script = ExtResource("3_dfwlk")
 
-[node name="ray_cast_right" type="RayCast2D" parent="move_comp"]
-position = Vector2(31, 0)
-collision_mask = 8
-collide_with_areas = true
+[node name="timer_release" type="Timer" parent="move_comp" index="2"]
 
-[node name="ray_cast_left" type="RayCast2D" parent="move_comp"]
-position = Vector2(-31, 0)
-collision_mask = 8
-collide_with_areas = true
-
-[node name="ray_cast_vision" type="RayCast2D" parent="move_comp"]
-collision_mask = 9
-collide_with_areas = true
-
-[node name="move_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
-script = ExtResource("2_17aj4")
-start_state = NodePath("move_idle")
-
-[node name="move_anticipate" type="Node" parent="move_machine"]
+[node name="move_anticipate" type="Node" parent="move_machine" index="0"]
 script = ExtResource("5_wcfpq")
 
-[node name="move_fall" type="Node" parent="move_machine"]
-script = ExtResource("6_c7qeu")
-
-[node name="move_idle" type="Node" parent="move_machine"]
+[node name="move_idle" parent="move_machine" index="3"]
 script = ExtResource("6_btqq8")
 
-[node name="move_release" type="Node" parent="move_machine"]
+[node name="move_release" type="Node" parent="move_machine" index="4"]
 script = ExtResource("7_uv2cc")
 
-[node name="attack_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
-script = ExtResource("2_17aj4")
-start_state = NodePath("attack_patrol")
+[node name="attack_alert" parent="attack_machine" index="0"]
+script = ExtResource("8_7vlkp")
 
-[node name="attack_patrol" type="Node" parent="attack_machine"]
-script = ExtResource("8_1ebfo")
-
-[node name="attack_pursuit" type="Node" parent="attack_machine"]
-script = ExtResource("9_eyrd4")
-
-[node name="attack_attack" type="Node" parent="attack_machine"]
+[node name="attack_attack" parent="attack_machine" index="1"]
 script = ExtResource("10_gijgc")
 
-[node name="timer_release" type="Timer" parent="."]
-wait_time = 2.5
-one_shot = true
+[node name="attack_patrol" parent="attack_machine" index="3"]
+script = ExtResource("8_1ebfo")
 
-[node name="timer_attack" type="Timer" parent="."]
-wait_time = 0.8
-one_shot = true
-
-[node name="vision" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="vision_area" type="CollisionShape2D" parent="vision"]
-shape = SubResource("CircleShape2D_35wfw")
-
-[node name="health_bar" type="ProgressBar" parent="."]
-modulate = Color(0.839216, 0.337255, 0.329412, 1)
-offset_left = -32.0
+[node name="health_bar" parent="." index="7"]
 offset_top = 40.0
-offset_right = 32.0
 offset_bottom = 48.0
-show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="animation_player" type="AnimationPlayer" parent="." index="8"]
 libraries = {
 "": SubResource("AnimationLibrary_s33ve")
 }
 
-[connection signal="timeout" from="timer_release" to="move_machine/move_anticipate" method="_on_timer_timeout"]
-[connection signal="timeout" from="timer_attack" to="move_comp" method="_on_timer_attack_timeout"]
-[connection signal="timeout" from="timer_attack" to="attack_machine/attack_attack" method="_on_timer_attack_timeout"]
-[connection signal="body_entered" from="vision" to="move_comp" method="_on_vision_body_entered"]
-[connection signal="body_exited" from="vision" to="move_comp" method="_on_vision_body_exited"]
+[connection signal="timeout" from="move_comp/timer_release" to="move_machine/move_anticipate" method="_on_timer_release_timeout"]
+[connection signal="timeout" from="attack_comp/timer_attack" to="attack_machine/attack_attack" method="_on_timer_attack_timeout"]

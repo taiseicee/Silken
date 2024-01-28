@@ -1,6 +1,6 @@
 extends State
 
-@onready var timer_attack: Timer = $"../../timer_attack"
+@onready var timer_attack: Timer = $"../../attack_comp/timer_attack"
 
 func enter_state():
 	super()
@@ -8,12 +8,13 @@ func enter_state():
 	timer_attack.start()
 	animation_player.queue("attack")
 
-func process_frame(_delta: float):
-	if not move_comp.is_within_attack_range():
-		state_transition.emit(self, "attack_pursuit")
+func process_frame(delta: float):
+	super(delta)
+	if not action_comp.is_within_attack_range():
+		state_transition.emit(self, "attack_alert")
 		return
 	
-	move_comp.attack()
+	action_comp.attack()
 
 func _on_timer_attack_timeout():
 	animation_player.queue("attack")
