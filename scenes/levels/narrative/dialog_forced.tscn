@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7wyguvixpsqh"]
+
+[ext_resource type="Script" path="res://src/levels/narrative/dialog_forced.gd" id="1_sfy4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k0x5"]
+size = Vector2(200, 400)
+
+[node name="dialog_forced" type="Node2D"]
+script = ExtResource("1_sfy4g")
+
+[node name="script" type="Node" parent="."]
+
+[node name="dialog_queue_hitbox" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="collision_shape" type="CollisionShape2D" parent="dialog_queue_hitbox"]
+shape = SubResource("RectangleShape2D_1k0x5")
+
+[connection signal="body_entered" from="dialog_queue_hitbox" to="." method="_on_dialog_queue_hitbox_body_entered"]
