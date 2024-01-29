@@ -5,7 +5,9 @@ extends Node2D
 @onready var character_body: Sprite2D = $"../player_body"
 @onready var character_head: Sprite2D = $"../player_head"
 @onready var timer_dash: Timer = $timer_dash
+@onready var timer_dash_persist: Timer = $timer_dash_bar_persist
 @onready var dash_hitbox: Area2D = $"../dash_hitbox"
+@onready var dash_bar: TextureProgressBar = $dash_bar
 
 @export var web_length_multiplier_x = 30
 @export var web_length_multiplier_y = 90
@@ -17,6 +19,14 @@ var web_direction: Vector2
 var web_length: float
 
 var can_dash: bool = true
+
+func _ready():
+	dash_bar.max_value = timer_dash.wait_time
+	dash_bar.value = timer_dash.wait_time
+
+func update_dash_bar():
+	if can_dash: return
+	dash_bar.value = timer_dash.wait_time - timer_dash.time_left
 
 func shoot():
 	var first_key_location = key_manager.get_key_location(first_key)
@@ -56,8 +66,8 @@ func set_second_key(key: Key) -> bool:
 	return true
 
 func dash():
-	if not can_dash:
-		return
+	if not can_dash: return
+	dash_bar.visible = true
 	can_dash = false
 	timer_dash.start()
 	dash_hitbox.monitoring = true
@@ -76,6 +86,7 @@ func dash():
 		character.apply_central_impulse(1000 * Vector2.LEFT)
 
 func _on_timer_dash_timeout():
+	timer_dash_persist.start()
 	can_dash = true
 	dash_hitbox.monitoring = false
 	dash_hitbox.monitorable = false
@@ -84,3 +95,7 @@ func _on_area_dash_body_entered(body):
 	if can_dash: return
 	if "take_damage" in body:
 		body.take_damage(character.dash_damage)
+
+func _on_timer_dash_bar_persist_timeout():
+	if not can_dash: return
+	dash_bar.visible = false

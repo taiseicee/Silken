@@ -7,6 +7,7 @@ func enter_state():
 func process_frame(delta: float):
 	super(delta)
 	move_comp.head_return(delta)
+	action_comp.update_dash_bar()
 	
 	if character.move_machine.is_in_state("move_death"):
 		return

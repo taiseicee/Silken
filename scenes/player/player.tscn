@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://pry5mw621egt"]
+[gd_scene load_steps=29 format=3 uid="uid://pry5mw621egt"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_x0jux"]
 [ext_resource type="Texture2D" uid="uid://eofr0o1p153n" path="res://assets/graphics/player/silken_spritesheet_spider.png" id="2_wpujw"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://src/player/states/web/web_shoot.gd" id="6_nj7vb"]
 [ext_resource type="Script" path="res://src/player/states/move/move_fall.gd" id="6_qkbaq"]
 [ext_resource type="Script" path="res://src/player/states/move/move_idle.gd" id="7_1sxsp"]
+[ext_resource type="Texture2D" uid="uid://dahpewffawihx" path="res://assets/graphics/user_interface/silken_dash_bar_background.png" id="7_dsv8h"]
+[ext_resource type="Texture2D" uid="uid://4vyb47tg6086" path="res://assets/graphics/user_interface/silken_dash_bar_progress.png" id="8_uv4q1"]
 [ext_resource type="Script" path="res://src/player/states/move/move_death.gd" id="9_wynpn"]
 [ext_resource type="Script" path="res://src/player/states/web/web_swing.gd" id="12_2vqid"]
 
@@ -378,6 +380,21 @@ script = ExtResource("3_kta7w")
 wait_time = 0.7
 one_shot = true
 
+[node name="dash_bar" type="TextureProgressBar" parent="web_comp"]
+visible = false
+offset_left = -136.0
+offset_top = -88.0
+offset_right = -76.0
+offset_bottom = -28.0
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("7_dsv8h")
+texture_progress = ExtResource("8_uv4q1")
+
+[node name="timer_dash_bar_persist" type="Timer" parent="web_comp"]
+wait_time = 0.8
+one_shot = true
+
 [node name="move_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("5_1spff")
 start_state = NodePath("move_idle")
@@ -431,4 +448,5 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7m30e")
 
 [connection signal="timeout" from="web_comp/timer_dash" to="web_comp" method="_on_timer_dash_timeout"]
+[connection signal="timeout" from="web_comp/timer_dash_bar_persist" to="web_comp" method="_on_timer_dash_bar_persist_timeout"]
 [connection signal="body_entered" from="dash_hitbox" to="web_comp" method="_on_area_dash_body_entered"]

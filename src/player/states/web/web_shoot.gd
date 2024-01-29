@@ -8,6 +8,7 @@ func enter_state():
 func process_frame(delta: float):
 	super(delta)
 	action_comp.in_shoot_turn(delta)
+	action_comp.update_dash_bar()
 	
 	if Input.is_action_just_pressed("primary_action"):
 		action_comp.dash()
