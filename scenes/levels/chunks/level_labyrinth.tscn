@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ukqemaylgkc1"]
+[gd_scene load_steps=15 format=3 uid="uid://ukqemaylgkc1"]
 
 [ext_resource type="PackedScene" uid="uid://bajdafg701uf6" path="res://scenes/levels/chunks/level_base.tscn" id="1_oif6w"]
 [ext_resource type="Script" path="res://src/levels/level_labyrinth.gd" id="2_3rq73"]
@@ -6,35 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://c085k8ncurt21" path="res://scenes/levels/obstacle/breakable_wall.tscn" id="2_td2wk"]
 [ext_resource type="PackedScene" uid="uid://i1rc41yslxsn" path="res://scenes/enemies/infected_spider.tscn" id="4_osi8u"]
 [ext_resource type="PackedScene" uid="uid://c5xr3f48rqnis" path="res://scenes/levels/obstacle/stalactite_fallable.tscn" id="5_t352l"]
+[ext_resource type="PackedScene" uid="uid://c7wyguvixpsqh" path="res://scenes/levels/narrative/dialog_forced.tscn" id="7_3so8l"]
 [ext_resource type="Texture2D" uid="uid://b7bmx2uk2buap" path="res://assets/graphics/characters/silken_guard.png" id="7_oiduu"]
 [ext_resource type="Texture2D" uid="uid://con2f1g45cm41" path="res://assets/graphics/levels/silken_background.jpg" id="8_4fcim"]
+[ext_resource type="Script" path="res://src/levels/narrative/dialog_labyrinth_guard.gd" id="8_exs2x"]
 [ext_resource type="Texture2D" uid="uid://btgp7r4bp5bnn" path="res://assets/graphics/lights/silken_point_light.png" id="8_t86jg"]
+[ext_resource type="Script" path="res://src/levels/narrative/dialog_labyrinth_queen.gd" id="9_sg6ub"]
 [ext_resource type="PackedScene" uid="uid://cbpbpjfd6kq56" path="res://scenes/characters/queen.tscn" id="10_keiqw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfn8c"]
-size = Vector2(400, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnj5s"]
-size = Vector2(100, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_co2hg"]
-size = Vector2(500, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qysww"]
-size = Vector2(300, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cbp5"]
 size = Vector2(500, 400)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljkel"]
-size = Vector2(200, 400)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_na3hl"]
-size = Vector2(300, 400)
-
 [node name="level_labyrinth" instance=ExtResource("1_oif6w")]
 script = ExtResource("2_3rq73")
-thorn_damage = 10
 
 [node name="tile_map" parent="." index="0"]
 layer_0/z_index = -1
@@ -61,13 +45,13 @@ position = Vector2(-1114, 4140)
 [node name="infected_spider3" parent="infected_spiders" index="2" instance=ExtResource("4_osi8u")]
 position = Vector2(-1598, 4660)
 
-[node name="stalagtite_fallable" parent="stalagtites" index="0" instance=ExtResource("5_t352l")]
+[node name="stalactite_fallable" parent="stalactites" index="0" instance=ExtResource("5_t352l")]
 position = Vector2(4950, 1800)
 
-[node name="stalagtite_fallable2" parent="stalagtites" index="1" instance=ExtResource("5_t352l")]
+[node name="stalactite_fallable2" parent="stalactites" index="1" instance=ExtResource("5_t352l")]
 position = Vector2(4050, 1800)
 
-[node name="stalagtite_fallable3" parent="stalagtites" index="2" instance=ExtResource("5_t352l")]
+[node name="stalactite_fallable3" parent="stalactites" index="2" instance=ExtResource("5_t352l")]
 position = Vector2(3150, 1800)
 
 [node name="breakable_wall" parent="breakable_walls" index="0" instance=ExtResource("2_td2wk")]
@@ -76,82 +60,31 @@ position = Vector2(4100, 600)
 [node name="breakable_wall2" parent="breakable_walls" index="1" instance=ExtResource("2_td2wk")]
 position = Vector2(5500, 600)
 
-[node name="thorns_hit_box" parent="." index="8"]
+[node name="dialog_guard" parent="dialog_sequences" index="0" node_paths=PackedStringArray("text_box", "speaker") instance=ExtResource("7_3so8l")]
+position = Vector2(2250, 2100)
+script = ExtResource("8_exs2x")
+text_box = NodePath("../../text_box")
+speaker = NodePath("../../royal_guard")
+
+[node name="dialog_queen" parent="dialog_sequences" index="1" node_paths=PackedStringArray("text_box", "speaker") instance=ExtResource("7_3so8l")]
+position = Vector2(-500, 4600)
+script = ExtResource("9_sg6ub")
+text_box = NodePath("../../text_box")
+speaker = NodePath("../../queen")
+
+[node name="background" type="Sprite2D" parent="." index="10"]
+z_index = -2
+position = Vector2(3224.78, 3135)
+scale = Vector2(5.54074, 5.54074)
+texture = ExtResource("8_4fcim")
 metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="thorns_hit_box" index="0"]
-position = Vector2(6200, 1050)
-shape = SubResource("RectangleShape2D_yfn8c")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="thorns_hit_box" index="1"]
-position = Vector2(6050, 1150)
-shape = SubResource("RectangleShape2D_qnj5s")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="thorns_hit_box" index="2"]
-position = Vector2(6900, 1450)
-shape = SubResource("RectangleShape2D_yfn8c")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="thorns_hit_box" index="3"]
-position = Vector2(7050, 1550)
-shape = SubResource("RectangleShape2D_qnj5s")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="thorns_hit_box" index="4"]
-position = Vector2(6550, 1850)
-shape = SubResource("RectangleShape2D_co2hg")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="thorns_hit_box" index="5"]
-position = Vector2(1650, 2550)
-shape = SubResource("RectangleShape2D_qysww")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="thorns_hit_box" index="6"]
-position = Vector2(1750, 2650)
-shape = SubResource("RectangleShape2D_qnj5s")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="thorns_hit_box" index="7"]
-position = Vector2(900, 2350)
-shape = SubResource("RectangleShape2D_yfn8c")
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="thorns_hit_box" index="8"]
-position = Vector2(750, 2450)
-shape = SubResource("RectangleShape2D_qnj5s")
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="thorns_hit_box" index="9"]
-position = Vector2(1050, 2450)
-shape = SubResource("RectangleShape2D_qnj5s")
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="thorns_hit_box" index="10"]
-position = Vector2(1050, 2550)
-shape = SubResource("RectangleShape2D_qnj5s")
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="thorns_hit_box" index="11"]
-position = Vector2(950, 2550)
-shape = SubResource("RectangleShape2D_qnj5s")
-
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="thorns_hit_box" index="12"]
-position = Vector2(1250, 3050)
-shape = SubResource("RectangleShape2D_qysww")
-
-[node name="dash_tutorial_area" type="Area2D" parent="." index="9"]
+[node name="dash_tutorial_area" type="Area2D" parent="." index="11"]
 position = Vector2(3650, 600)
 metadata/_edit_group_ = true
 
 [node name="rectangle_collider" type="CollisionShape2D" parent="dash_tutorial_area" index="0"]
 shape = SubResource("RectangleShape2D_8cbp5")
-
-[node name="narrative_1_hit_box" type="Area2D" parent="." index="10"]
-position = Vector2(2250, 2100)
-collision_layer = 32
-
-[node name="rectangle_collider" type="CollisionShape2D" parent="narrative_1_hit_box" index="0"]
-shape = SubResource("RectangleShape2D_ljkel")
-
-[node name="narrative_2_hit_box" type="Area2D" parent="." index="11"]
-position = Vector2(-500, 4600)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="narrative_2_hit_box" index="0"]
-shape = SubResource("RectangleShape2D_na3hl")
 
 [node name="royal_guard" type="Sprite2D" parent="." index="12"]
 position = Vector2(987, 2131)
@@ -165,17 +98,8 @@ metadata/_edit_group_ = true
 texture = ExtResource("8_t86jg")
 texture_scale = 2.5
 
-[node name="SilkenBackground" type="Sprite2D" parent="." index="13"]
-z_index = -2
-position = Vector2(3224.78, 3135)
-scale = Vector2(5.54074, 5.54074)
-texture = ExtResource("8_4fcim")
-metadata/_edit_lock_ = true
-
-[node name="queen" parent="." index="14" instance=ExtResource("10_keiqw")]
+[node name="queen" parent="." index="13" instance=ExtResource("10_keiqw")]
 position = Vector2(276, 4582)
 
-[connection signal="body_entered" from="thorns_hit_box" to="." method="_on_thorns_hit_box_body_entered"]
+[connection signal="finished_dialog" from="dialog_sequences/dialog_queen" to="." method="_on_dialog_queen_finished_dialog"]
 [connection signal="body_entered" from="dash_tutorial_area" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="narrative_1_hit_box" to="." method="_on_narrative_1_body_entered"]
-[connection signal="body_entered" from="narrative_2_hit_box" to="." method="_on_narrative_2_hit_box_body_entered"]

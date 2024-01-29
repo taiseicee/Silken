@@ -123,12 +123,16 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="infected_spiders" type="Node" parent="."]
 
-[node name="stalagtites" type="Node" parent="."]
+[node name="stalactites" type="Node" parent="."]
 
 [node name="breakable_walls" type="Node" parent="."]
+
+[node name="dialog_sequences" type="Node" parent="."]
 
 [node name="text_box" parent="." instance=ExtResource("3_1txxj")]
 visible = false
 
-[node name="thorns_hit_box" type="Area2D" parent="."]
+[node name="thorns_hitbox" type="Area2D" parent="."]
 collision_layer = 8
+
+[connection signal="body_entered" from="thorns_hitbox" to="." method="_on_thorns_hitbox_body_entered"]
