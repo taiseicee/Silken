@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ukqemaylgkc1"]
+[gd_scene load_steps=25 format=3 uid="uid://ukqemaylgkc1"]
 
 [ext_resource type="PackedScene" uid="uid://bajdafg701uf6" path="res://scenes/levels/chunks/level_base.tscn" id="1_oif6w"]
 [ext_resource type="Script" path="res://src/levels/level_labyrinth.gd" id="2_3rq73"]
@@ -13,6 +13,36 @@
 [ext_resource type="Texture2D" uid="uid://btgp7r4bp5bnn" path="res://assets/graphics/lights/silken_point_light.png" id="8_t86jg"]
 [ext_resource type="Script" path="res://src/levels/narrative/dialog_labyrinth_queen.gd" id="9_sg6ub"]
 [ext_resource type="PackedScene" uid="uid://cbpbpjfd6kq56" path="res://scenes/characters/queen.tscn" id="10_keiqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oblq"]
+size = Vector2(400, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8fmg"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2q7n"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e338p"]
+size = Vector2(500, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opkol"]
+size = Vector2(300, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y252s"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnudh"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdsij"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rb5i"]
+size = Vector2(200, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht0ed"]
+size = Vector2(100, 500)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cbp5"]
 size = Vector2(500, 400)
@@ -71,6 +101,66 @@ position = Vector2(-500, 4600)
 script = ExtResource("9_sg6ub")
 text_box = NodePath("../../text_box")
 speaker = NodePath("../../queen")
+
+[node name="square_collider" type="CollisionShape2D" parent="thorns_hitbox" index="0"]
+position = Vector2(6200, 1050)
+shape = SubResource("RectangleShape2D_0oblq")
+
+[node name="square_collider5" type="CollisionShape2D" parent="thorns_hitbox" index="1"]
+position = Vector2(6050, 1150)
+shape = SubResource("RectangleShape2D_b8fmg")
+
+[node name="square_collider6" type="CollisionShape2D" parent="thorns_hitbox" index="2"]
+position = Vector2(6900, 1450)
+shape = SubResource("RectangleShape2D_0oblq")
+
+[node name="square_collider10" type="CollisionShape2D" parent="thorns_hitbox" index="3"]
+position = Vector2(7050, 1550)
+shape = SubResource("RectangleShape2D_v2q7n")
+
+[node name="square_collider12" type="CollisionShape2D" parent="thorns_hitbox" index="4"]
+position = Vector2(6550, 1850)
+shape = SubResource("RectangleShape2D_e338p")
+
+[node name="square_collider16" type="CollisionShape2D" parent="thorns_hitbox" index="5"]
+position = Vector2(1650, 2550)
+shape = SubResource("RectangleShape2D_opkol")
+
+[node name="square_collider19" type="CollisionShape2D" parent="thorns_hitbox" index="6"]
+position = Vector2(1750, 2650)
+shape = SubResource("RectangleShape2D_y252s")
+
+[node name="square_collider20" type="CollisionShape2D" parent="thorns_hitbox" index="7"]
+position = Vector2(900, 2350)
+shape = SubResource("RectangleShape2D_0oblq")
+
+[node name="square_collider24" type="CollisionShape2D" parent="thorns_hitbox" index="8"]
+position = Vector2(-4243, 3547)
+shape = SubResource("RectangleShape2D_0oblq")
+
+[node name="square_collider25" type="CollisionShape2D" parent="thorns_hitbox" index="9"]
+position = Vector2(750, 2450)
+shape = SubResource("RectangleShape2D_xnudh")
+
+[node name="square_collider26" type="CollisionShape2D" parent="thorns_hitbox" index="10"]
+position = Vector2(1050, 2450)
+shape = SubResource("RectangleShape2D_tdsij")
+
+[node name="square_collider27" type="CollisionShape2D" parent="thorns_hitbox" index="11"]
+position = Vector2(1002, 2550)
+shape = SubResource("RectangleShape2D_3rb5i")
+
+[node name="square_collider17" type="CollisionShape2D" parent="thorns_hitbox" index="12"]
+position = Vector2(1250, 3050)
+shape = SubResource("RectangleShape2D_opkol")
+
+[node name="square_collider21" type="CollisionShape2D" parent="thorns_hitbox" index="13"]
+position = Vector2(-1200, 3850)
+shape = SubResource("RectangleShape2D_0oblq")
+
+[node name="square_collider13" type="CollisionShape2D" parent="thorns_hitbox" index="14"]
+position = Vector2(-1844, 4046)
+shape = SubResource("RectangleShape2D_ht0ed")
 
 [node name="background" type="Sprite2D" parent="." index="10"]
 z_index = -2
