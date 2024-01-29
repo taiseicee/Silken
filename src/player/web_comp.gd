@@ -5,6 +5,7 @@ extends Node2D
 @onready var character_body: Sprite2D = $"../player_body"
 @onready var character_head: Sprite2D = $"../player_head"
 @onready var timer_dash: Timer = $timer_dash
+@onready var dash_hitbox: Area2D = $"../dash_hitbox"
 
 @export var web_length_multiplier_x = 30
 @export var web_length_multiplier_y = 90
@@ -59,6 +60,8 @@ func dash():
 		return
 	can_dash = false
 	timer_dash.start()
+	dash_hitbox.monitoring = true
+	dash_hitbox.monitorable = true
 	
 	if character.linear_velocity.x < -10:
 		character.apply_central_impulse(1000 * Vector2.LEFT)
@@ -74,9 +77,10 @@ func dash():
 
 func _on_timer_dash_timeout():
 	can_dash = true
+	dash_hitbox.monitoring = false
+	dash_hitbox.monitorable = false
 
 func _on_area_dash_body_entered(body):
-	if can_dash:
-		return
+	if can_dash: return
 	if "take_damage" in body:
 		body.take_damage(character.dash_damage)
