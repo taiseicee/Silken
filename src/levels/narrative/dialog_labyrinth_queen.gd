@@ -8,7 +8,9 @@ func _ready():
 		
 		"While you are but a newborn, I ask of you to please help your Silk-kin"
 	]
-	
+
+func _on_dialog_queue_hitbox_body_entered(body):
+	super(body)
 	if globals.cocoon_count == 1: 
 		dialog[1] += "1 cocoon so far..."
 	else:
