@@ -134,31 +134,27 @@ shape = SubResource("RectangleShape2D_y252s")
 position = Vector2(900, 2350)
 shape = SubResource("RectangleShape2D_0oblq")
 
-[node name="square_collider24" type="CollisionShape2D" parent="thorns_hitbox" index="8"]
-position = Vector2(-4243, 3547)
-shape = SubResource("RectangleShape2D_0oblq")
-
-[node name="square_collider25" type="CollisionShape2D" parent="thorns_hitbox" index="9"]
+[node name="square_collider25" type="CollisionShape2D" parent="thorns_hitbox" index="8"]
 position = Vector2(750, 2450)
 shape = SubResource("RectangleShape2D_xnudh")
 
-[node name="square_collider26" type="CollisionShape2D" parent="thorns_hitbox" index="10"]
+[node name="square_collider26" type="CollisionShape2D" parent="thorns_hitbox" index="9"]
 position = Vector2(1050, 2450)
 shape = SubResource("RectangleShape2D_tdsij")
 
-[node name="square_collider27" type="CollisionShape2D" parent="thorns_hitbox" index="11"]
+[node name="square_collider27" type="CollisionShape2D" parent="thorns_hitbox" index="10"]
 position = Vector2(1002, 2550)
 shape = SubResource("RectangleShape2D_3rb5i")
 
-[node name="square_collider17" type="CollisionShape2D" parent="thorns_hitbox" index="12"]
+[node name="square_collider17" type="CollisionShape2D" parent="thorns_hitbox" index="11"]
 position = Vector2(1250, 3050)
 shape = SubResource("RectangleShape2D_opkol")
 
-[node name="square_collider21" type="CollisionShape2D" parent="thorns_hitbox" index="13"]
+[node name="square_collider21" type="CollisionShape2D" parent="thorns_hitbox" index="12"]
 position = Vector2(-1200, 3850)
 shape = SubResource("RectangleShape2D_0oblq")
 
-[node name="square_collider13" type="CollisionShape2D" parent="thorns_hitbox" index="14"]
+[node name="square_collider13" type="CollisionShape2D" parent="thorns_hitbox" index="13"]
 position = Vector2(-1844, 4046)
 shape = SubResource("RectangleShape2D_ht0ed")
 
